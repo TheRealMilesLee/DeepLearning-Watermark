@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "name": "macos-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/usr/local/Cellar/opencv/4.5.2_4/include",
+        "/usr/local/Cellar/opencv/4.5.2_4/lib",
+        "/usr/local/Cellar/opencv/4.5.2_4/include/opencv4"
+      ],
+      "defines": [],
+      "macFrameworkPath": [],
+      "compilerPath": "/usr/local/bin/gcc-11",
+      "cStandard": "c11",
+      "cppStandard": "c++11",
+      "intelliSenseMode": "macos-gcc-x64",
+      "compilerArgs": []
+    }
+  ],
+  "version": 4
+}
