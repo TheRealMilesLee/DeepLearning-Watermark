@@ -2,7 +2,6 @@
 
 void Preprocess::ReadImageFromFile()
 {
-  cv::String file_location = "D:\\CS-Related\\Watermark Faker\\Test_Images\\facades\\test";
   //Save the filename into the vector
   cv::glob(file_location, filenames);
   for (size_t looptimes = 0; looptimes < filenames.size(); looptimes++)
@@ -44,9 +43,14 @@ void Preprocess::CropImageRightSide()
 
 void Preprocess::ConvergentImage()
 {
-  int LowerBound = 0;
-  int UpperBound = 1;
-  cv::normalize(image_Cropped, NormalizedImage, LowerBound, UpperBound, cv::NORM_MINMAX);
+  std::cout << std::endl << "The size of the vector is: " << image_Readin.size() << std::endl;
+  for (size_t loop = 0; loop < image_Cropped.size(); loop++)
+  {
+    cv::Mat NormalConvertImage = image_Cropped.at(loop) / 255;
+    cv::Mat ConvertedImage = NormalConvertImage / 2 - 1;
+    NormalizedImage.push_back(ConvertedImage);
+  }
+  std::cout << std::endl << ".....Done. " << std::endl;
 }
 
 void Preprocess::OutputAsCSV()
@@ -55,8 +59,7 @@ void Preprocess::OutputAsCSV()
   outfile.open("D:\\CS-Related\\Watermark Faker\\PreprocessDir\\Preprocess.csv");
   for (size_t loop = 0; loop < NormalizedImage.size(); loop++)
   {
-    OutputVector.at(loop) = NormalizedImage.at(loop);
-    outfile << OutputVector.at(loop);
+    outfile << NormalizedImage.at(loop);
   }
 
   outfile.close();

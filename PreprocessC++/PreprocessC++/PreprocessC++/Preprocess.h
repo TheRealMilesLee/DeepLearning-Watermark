@@ -20,8 +20,7 @@ private:
   std::vector<cv::Mat> image_Readin;
   std::vector<cv::Mat> image_Cropped;
   std::vector<cv::Mat> NormalizedImage;
-  std::vector<cv::Mat> OutputVector;
-
+  cv::String file_location = "D:\\CS-Related\\Watermark Faker\\Test_Images\\facades\\test";
 public:
   void ReadImageFromFile();
   void CropImageLeftSide();
