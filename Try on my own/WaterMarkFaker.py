@@ -39,7 +39,6 @@ PreventZeroVariable = -6
 ImageCropSize = 256
 
 # 构建 D 的卷积层扩充一圈0，而不是像 G 的卷积层那样，使用padding="same"参数？
-# 疑问：为什么这里要手动
 def discrim_conv(batch_input, out_channels, stride):
     # 下一行的 tf.pad()表示只给图片的长、宽周围垫一圈0，而不管batch、channel，参见：https://blog.csdn.net/qq_40994943/article/details/85331327
     padded_input = tf.pad(batch_input, [[0, 0], [1, 1], [1, 1], [0, 0]], mode="CONSTANT")
@@ -231,7 +230,7 @@ def create_generator(generator_inputs, generator_outputs_channels):
 
     return layers[-1]
 
-
+#创建训练模型
 def create_model(inputs, targets):
     def create_discriminator(discrim_inputs, discrim_targets):
         n_layers = 3
