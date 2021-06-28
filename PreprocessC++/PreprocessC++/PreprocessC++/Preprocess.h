@@ -16,6 +16,7 @@ public:
 class Preprocess
 {
 private:
+  std::vector<cv::String> filenames;
   std::vector<cv::Mat> image_Readin;
   std::vector<cv::Mat> image_Cropped;
   std::vector<cv::Mat> NormalizedImage;
