@@ -46,8 +46,8 @@ void Preprocess::ConvergentImage()
   std::cout << std::endl << "The size of the vector is: " << image_Readin.size() << std::endl;
   for (size_t loop = 0; loop < image_Cropped.size(); loop++)
   {
-    cv::Mat NormalConvertImage = image_Cropped.at(loop) / 255;
-    cv::Mat ConvertedImage = NormalConvertImage / 2 - 1;
+    cv::Mat NormalConvertImage = image_Cropped.at(loop) / 255.0;
+    cv::Mat ConvertedImage = NormalConvertImage * 2.0 - 1.0;
     NormalizedImage.push_back(ConvertedImage);
   }
   std::cout << std::endl << ".....Done. " << std::endl;
