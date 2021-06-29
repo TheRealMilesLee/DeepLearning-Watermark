@@ -6,7 +6,7 @@
     <ProjectGuid>{8ab71898-ebe1-4d41-b290-5b5e3ff6e48b}</ProjectGuid>
     <ProjectHome />
     <StartupFile>WaterMarkFaker.py</StartupFile>
-    <SearchPath>D:\CS-Related\Watermark Faker\DeepLearning-Watermake\Try on my own\WaterMarkFaker.py</SearchPath>
+    <SearchPath>WaterMarkFaker.py</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>

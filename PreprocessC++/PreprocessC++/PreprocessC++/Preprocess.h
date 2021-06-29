@@ -19,7 +19,7 @@ private:
   std::vector<cv::String> filenames;
   std::vector<cv::Mat> image_Readin;
   std::vector<cv::Mat> image_Cropped;
-  std::vector<cv::Mat> NormalizedImage;
+  std::vector<cv::Vec3f> NormalizedImage;
   cv::String file_location = "D:\\CS-Related\\Watermark Faker\\Test_Images\\facades\\test";
 public:
   void ReadImageFromFile();
