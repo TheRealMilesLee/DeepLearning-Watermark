@@ -6,12 +6,15 @@
     <ProjectGuid>{8ab71898-ebe1-4d41-b290-5b5e3ff6e48b}</ProjectGuid>
     <ProjectHome />
     <StartupFile>WaterMarkFaker.py</StartupFile>
-    <SearchPath />
+    <SearchPath>D:\CS-Related\Watermark Faker\DeepLearning-Watermake\Try on my own\WaterMarkFaker.py</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId>CondaEnv|CondaEnv|TensorflowGPU</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.9</InterpreterId>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
+    <InterpreterPath>C:\Users\grand\AppData\Local\Programs\Python\Python39\python.exe</InterpreterPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -22,7 +25,10 @@
     <Compile Include="WaterMarkFaker.py" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="CondaEnv|CondaEnv|TensorflowGPU" />
+    <InterpreterReference Include="Global|PythonCore|3.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

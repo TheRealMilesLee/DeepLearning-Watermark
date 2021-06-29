@@ -36,7 +36,6 @@ parser.add_argument("--output_filetype", default="png", choices=["png", "jpeg"])
 userArguments = parser.parse_args()
 
 PreventZeroVariable = -6
-ImageCropSize = 256
 
 # 构建 D 的卷积层扩充一圈0，而不是像 G 的卷积层那样，使用padding="same"参数？
 def discrim_conv(batch_input, out_channels, stride):
