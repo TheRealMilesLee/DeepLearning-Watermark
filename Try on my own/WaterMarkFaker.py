@@ -34,8 +34,10 @@ userArguments = parser.parse_args()
 
 PreventZeroVariable = -6
 
+#从硬盘中读取已经预处理完成的CSV文件
 def ReadModuleFromDisk():
     csv_reader = csv.reader(open("D:\CS-Related\Watermark Faker\PreprocessDir\Preprocess.csv"))
+    return csv_reader
 
 
 # 构建 D 的卷积层扩充一圈0，而不是像 G 的卷积层那样，使用padding="same"参数？
