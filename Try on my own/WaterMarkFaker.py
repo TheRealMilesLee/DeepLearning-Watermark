@@ -35,7 +35,7 @@ userArguments = parser.parse_args()
 PreventZeroVariable = -6
 
 #从硬盘中读取已经预处理完成的CSV文件
-def ReadModuleFromDisk():
+def read_module_from_disk():
     csv_reader = csv.reader(open("D:\CS-Related\Watermark Faker\PreprocessDir\Preprocess.csv"))
     return csv_reader
 
