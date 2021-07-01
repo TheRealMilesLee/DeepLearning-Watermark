@@ -14,10 +14,8 @@ int main()
       preprocessObject.ReadImageFromFile();
       std::cout << std::endl << "Starting crop the image to 256x256...";
       preprocessObject.CropImageLeftSide();
-      std::cout << std::endl << "Starting convert image into [-1,1]";
-      preprocessObject.ConvergentImage();
-      std::cout << std::endl << "Output everything to the csv file...";
-      preprocessObject.OutputAsCSV();
+      std::cout << std::endl << "Starting convert image into [-1,1] and Output everything to the csv file...";
+      preprocessObject.ConvergentImageAndOutput();
       std::cout << std::endl << "Done.";
     }
     else if (userArgumentMode == "BtoA")
@@ -26,10 +24,8 @@ int main()
       preprocessObject.ReadImageFromFile();
       std::cout << std::endl << "Starting crop the image to 256x256...";
       preprocessObject.CropImageRightSide();
-      std::cout << std::endl << "Starting convert image into [-1,1]";
-      preprocessObject.ConvergentImage();
-      std::cout << std::endl << "Output everything to the csv file...";
-      preprocessObject.OutputAsCSV();
+      std::cout << std::endl << "Starting convert image into [-1,1] and Output everything to the csv file...";
+      preprocessObject.ConvergentImageAndOutput();
       std::cout << std::endl << "Done.";
     }
     else

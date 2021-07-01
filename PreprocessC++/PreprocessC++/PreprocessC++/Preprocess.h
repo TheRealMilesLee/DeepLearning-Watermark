@@ -16,15 +16,15 @@ public:
 class Preprocess
 {
 private:
+  cv::String file_location = "D:\\CS-Related\\Watermark Faker\\Test_Images\\facades\\test";
+  cv::Mat ImageReadIn;
+  cv::Mat imageCropTool;
   std::vector<cv::String> filenames;
   std::vector<cv::Mat> image_Readin;
   std::vector<cv::Mat> image_Cropped;
-  std::vector<cv::Vec3f> NormalizedImage;
-  cv::String file_location = "D:\\CS-Related\\Watermark Faker\\Test_Images\\facades\\test";
 public:
   void ReadImageFromFile();
   void CropImageLeftSide();
   void CropImageRightSide();
-  void ConvergentImage();
-  void OutputAsCSV();
+  void ConvergentImageAndOutput();
 };
