@@ -3,14 +3,12 @@ import numpy as np
 import argparse
 import os
 import json
-import glob
 import random
 import collections
 import math
 import time
 
 # https://blog.csdn.net/MOU_IT/article/details/80802407，该网页中的部分实现参考了该pix2pix的代码，里面有些注释，可以参考参考。
-
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_dir", default="D:\CS-Related\Watermark Faker\Test_Images", help="path to folder containing images")
 parser.add_argument("--mode", required=False, default="train", choices=["train", "test", "export"])
@@ -36,7 +34,7 @@ parser.add_argument("--ndf", type=int, default=64, help="number of discriminator
 parser.add_argument("--scale_size", type=int, default=256, help="scale images to this size before cropping to 256x256")
 parser.add_argument("--flip", dest="flip", action="store_true", help="flip images horizontally")
 parser.add_argument("--no_flip", dest="flip", action="store_false", help="don't flip images horizontally")
-parser.set_defaults(flip=False)
+parser.set_defaults(flip = False)
 parser.add_argument("--lr", type=float, default=0.0002, help="initial learning rate for adam")
 parser.add_argument("--beta1", type=float, default=0.5, help="momentum term of adam")
 parser.add_argument("--l1_weight", type=float, default=100.0, help="weight on L1 term for generator gradient")
@@ -46,59 +44,36 @@ parser.add_argument("--gan_weight", type=float, default=1.0, help="weight on GAN
 parser.add_argument("--output_filetype", default="png", choices=["png", "jpeg"])
 a = parser.parse_args()
 
+#预设防止出现小于0的数的变量
 EPS = 1e-12
-CROP_SIZE = 256  # 原始数值：256
+# 命名元组,用于存放加载的数据集合创建好的模型
+Examples = collections.namedtuple("Examples", "paths, inputs, targets, count, steps_per_epoch")
+Model = collections.namedtuple("Model", "outputs, predict_real, predict_fake, discrim_loss, discrim_grads_and_vars, gen_loss_GAN, gen_loss_L1, gen_grads_and_vars, train")
 
-def preprocess(image):
-    with tf.name_scope("preprocess"):
-        # [0, 1] => [-1, 1]
-        return image * 2 - 1
-
-def deprocess(image):
-    with tf.name_scope("deprocess"):
-        # [-1, 1] => [0, 1]
-        return (image + 1) / 2
-
-def preprocess_lab(lab):
-    with tf.name_scope("preprocess_lab"):
-        L_chan, a_chan, b_chan = tf.unstack(lab, axis=2)
-        # L_chan: black and white with input range [0, 100]
-        # a_chan/b_chan: color channels with input range ~[-110, 110], not exact
-        # [0, 100] => [-1, 1],  ~[-110, 110] => [-1, 1]
-        return [L_chan / 50 - 1, a_chan / 110, b_chan / 110]
-
-def deprocess_lab(L_chan, a_chan, b_chan):
-    with tf.name_scope("deprocess_lab"):
-        # this is axis=3 instead of axis=2 because we process individual images but deprocess batches
-        return tf.stack([(L_chan + 1) / 2 * 100, a_chan * 110, b_chan * 110], axis=3)
-
-def augment(image, brightness):
-    # (a, b) color channels, combine with L channel and convert to rgb
-    a_chan, b_chan = tf.unstack(image, axis=3)
-    L_chan = tf.squeeze(brightness, axis=3)
-    lab = deprocess_lab(L_chan, a_chan, b_chan)
-    rgb = lab_to_rgb(lab)
-    return rgb
-
-
-# 构建 D 的卷积层扩充一圈0，而不是像 G 的卷积层那样，使用padding="same"参数？
-# 疑问：为什么这里要手动
+# 判别器的卷积定义，batch_input为 [ batch , 256 , 256 , 6 ]
 def discrim_conv(batch_input, out_channels, stride):
+    # [ batch , 256 , 256 , 6 ] ===>[ batch , 258 , 258 , 6 ]
     # 下一行的 tf.pad()表示只给图片的长、宽周围垫一圈0，而不管batch、channel，参见：https://blog.csdn.net/qq_40994943/article/details/85331327
-    padded_input = tf.pad(batch_input, [[0, 0], [1, 1], [1, 1], [0, 0]], mode="CONSTANT")
-    return tf.layers.conv2d(padded_input, out_channels, kernel_size=4, strides=(stride, stride), padding="valid", kernel_initializer=tf.random_normal_initializer(0, 0.02))
-
+    padded_input = tf.pad(batch_input, [[0, 0], [1, 1], [1, 1], [0, 0]], mode = "CONSTANT")
+    '''
+      [0,0]: 第一维batch大小不扩充
+      [1,1]：第二维图像宽度左右各扩充一列，用0填充
+      [1,1]：第三维图像高度上下各扩充一列，用0填充
+      [0,0]：第四维图像通道不做扩充
+    '''
+    return tf.keras.layers.Conv2D(padded_input, out_channels, kernel_size=4, strides=(stride, stride), padding="valid", kernel_initializer=tf.random_normal_initializer(0, 0.02))
 
 # 构建 G 的卷积层
 # 根据输入的tensor(对应这里的batch_input)和需要输出的层数(对应这里的out_channels)，创建卷积层，并返回卷积后的结果
 def gen_conv(batch_input, out_channels):
     # [batch, in_height, in_width, in_channels] => [batch, out_height, out_width, out_channels]
-    initializer = tf.random_normal_initializer(0, 0.02)  # 返回一个生成具有正态分布的张量的初始化器。参见：https://blog.csdn.net/weixin_34252686/article/details/89804826，https://www.w3cschool.cn/tensorflow_python/tensorflow_python-b8jq2gqh.html
+    # 返回一个生成具有正态分布的张量的初始化器。参见：https://blog.csdn.net/weixin_34252686/article/details/89804826，https://www.w3cschool.cn/tensorflow_python/tensorflow_python-b8jq2gqh.html
+    initializer = tf.random_normal_initializer(0, 0.02)
     if a.separable_conv:  # 疑问：作用不明，非最优先项，暂时忽略
-        return tf.layers.separable_conv2d(batch_input, out_channels, kernel_size=4, strides=(2, 2), padding="same", depthwise_initializer=initializer, pointwise_initializer=initializer)
+        return tf.keras.layers.SeparableConv2D(batch_input, out_channels, kernel_size=4, strides=(2, 2), padding="same", depthwise_initializer=initializer, pointwise_initializer=initializer)
     else:
         # tf.layers.conv2d()，参见：https://blog.csdn.net/gqixf/article/details/80519912
-        return tf.layers.conv2d(batch_input, out_channels, kernel_size=4, strides=(2, 2), padding="same", kernel_initializer=initializer)
+        return tf.keras.layers.Conv2D(batch_input, out_channels, kernel_size=4, strides=(2, 2), padding="same", kernel_initializer=initializer)
 
 
 def gen_deconv(batch_input, out_channels):
@@ -146,154 +121,17 @@ def check_image(image):
     image.set_shape(shape)
     return image
 
-
-# based on https://github.com/torch/image/blob/9f65c30167b2048ecbe8b7befdc6b2d6d12baee9/generic/image.c
-def rgb_to_lab(srgb):
-    # 待解析···
-
-    with tf.name_scope("rgb_to_lab"):
-        srgb = check_image(srgb)  # 检查image的通道数和维数，并修正shape，将通道数设置为3，方便后买你的计算
-        srgb_pixels = tf.reshape(srgb, [-1, 3])  # -1的解释，在该函数的官方解释中有，用于flatten像素，这里具体的意思为，将三个通道上的值从矩阵变为单独一行，最终得到3行。
-
-        with tf.name_scope("srgb_to_xyz"):
-            linear_mask = tf.cast(srgb_pixels <= 0.04045, dtype=tf.float32)
-            exponential_mask = tf.cast(srgb_pixels > 0.04045, dtype=tf.float32)
-            rgb_pixels = (srgb_pixels / 12.92 * linear_mask) + (((srgb_pixels + 0.055) / 1.055) ** 2.4) * exponential_mask
-            rgb_to_xyz = tf.constant([
-                #    X        Y          Z
-                [0.412453, 0.212671, 0.019334],  # R
-                [0.357580, 0.715160, 0.119193],  # G
-                [0.180423, 0.072169, 0.950227],  # B
-            ])
-            xyz_pixels = tf.matmul(rgb_pixels, rgb_to_xyz)
-
-        # https://en.wikipedia.org/wiki/Lab_color_space#CIELAB-CIEXYZ_conversions
-        with tf.name_scope("xyz_to_cielab"):
-            # convert to fx = f(X/Xn), fy = f(Y/Yn), fz = f(Z/Zn)
-
-            # normalize for D65 white point
-            xyz_normalized_pixels = tf.multiply(xyz_pixels, [1/0.950456, 1.0, 1/1.088754])
-
-            epsilon = 6/29
-            linear_mask = tf.cast(xyz_normalized_pixels <= (epsilon**3), dtype=tf.float32)
-            exponential_mask = tf.cast(xyz_normalized_pixels > (epsilon**3), dtype=tf.float32)
-            fxfyfz_pixels = (xyz_normalized_pixels / (3 * epsilon**2) + 4/29) * linear_mask + (xyz_normalized_pixels ** (1/3)) * exponential_mask
-
-            # convert to lab
-            fxfyfz_to_lab = tf.constant([
-                #  l       a       b
-                [  0.0,  500.0,    0.0], # fx
-                [116.0, -500.0,  200.0], # fy
-                [  0.0,    0.0, -200.0], # fz
-            ])
-            lab_pixels = tf.matmul(fxfyfz_pixels, fxfyfz_to_lab) + tf.constant([-16.0, 0.0, 0.0])
-
-        return tf.reshape(lab_pixels, tf.shape(srgb))
-
-
-def lab_to_rgb(lab):
-    with tf.name_scope("lab_to_rgb"):
-        lab = check_image(lab)
-        lab_pixels = tf.reshape(lab, [-1, 3])
-
-        # https://en.wikipedia.org/wiki/Lab_color_space#CIELAB-CIEXYZ_conversions
-        with tf.name_scope("cielab_to_xyz"):
-            # convert to fxfyfz
-            lab_to_fxfyfz = tf.constant([
-                #   fx      fy        fz
-                [1/116.0, 1/116.0,  1/116.0], # l
-                [1/500.0,     0.0,      0.0], # a
-                [    0.0,     0.0, -1/200.0], # b
-            ])
-            fxfyfz_pixels = tf.matmul(lab_pixels + tf.constant([16.0, 0.0, 0.0]), lab_to_fxfyfz)
-
-            # convert to xyz
-            epsilon = 6/29
-            linear_mask = tf.cast(fxfyfz_pixels <= epsilon, dtype=tf.float32)
-            exponential_mask = tf.cast(fxfyfz_pixels > epsilon, dtype=tf.float32)
-            xyz_pixels = (3 * epsilon**2 * (fxfyfz_pixels - 4/29)) * linear_mask + (fxfyfz_pixels ** 3) * exponential_mask
-
-            # denormalize for D65 white point
-            xyz_pixels = tf.multiply(xyz_pixels, [0.950456, 1.0, 1.088754])
-
-        with tf.name_scope("xyz_to_srgb"):
-            xyz_to_rgb = tf.constant([
-                #     r           g          b
-                [ 3.2404542, -0.9692660,  0.0556434], # x
-                [-1.5371385,  1.8760108, -0.2040259], # y
-                [-0.4985314,  0.0415560,  1.0572252], # z
-            ])
-            rgb_pixels = tf.matmul(xyz_pixels, xyz_to_rgb)
-            # avoid a slightly negative number messing up the conversion
-            rgb_pixels = tf.clip_by_value(rgb_pixels, 0.0, 1.0)
-            linear_mask = tf.cast(rgb_pixels <= 0.0031308, dtype=tf.float32)
-            exponential_mask = tf.cast(rgb_pixels > 0.0031308, dtype=tf.float32)
-            srgb_pixels = (rgb_pixels * 12.92 * linear_mask) + ((rgb_pixels ** (1/2.4) * 1.055) - 0.055) * exponential_mask
-
-        return tf.reshape(srgb_pixels, tf.shape(lab))
-
-
 def load_examples():
     # 检查输入文件夹是否为空，或不存在
     if a.input_dir is None or not os.path.exists(a.input_dir):
         raise Exception("input_dir does not exist")
-
-    # 读取所有输入图像的路径，并决定解码方式
-    # input_paths包含了所有的input的具体路径
-    # decode为针对不同存储格式的图片的解码方式
-    input_paths = glob.glob(os.path.join(a.input_dir, "*.jpg"))  # glop.glop()用于获取符合输入路径格式的所有文件的具体路径，（包括文件夹和文件），参见：https://www.cnblogs.com/luminousjj/p/9359543.html
-    decode = tf.image.decode_jpeg
-    if len(input_paths) == 0:
-        input_paths = glob.glob(os.path.join(a.input_dir, "*.png"))
-        decode = tf.image.decode_png
-    '''以下修改，by王爇沩'''
-    if len(input_paths) == 0:
-        input_paths = glob.glob(os.path.join(a.input_dir, "*.bmp"))
-        decode = tf.image.decode_bmp
-    '''分割线'''
-    if len(input_paths) == 0:
-        raise Exception("input_dir contains no image files")
-
-    # 取得文件的名字（不含拓展名，如.txt）
-    def get_name(path):
-        # basename()返回路径末尾的文件名，如code.py。参见：https://www.cnblogs.com/baxianhua/p/10214263.html
-        # splitext()将文件名和拓展名分开。参见：https://blog.csdn.net/T1243_3/article/details/80170006
-        name, _ = os.path.splitext(os.path.basename(path))
-        return name
-
-    # 根据文件的名字是字符还是纯数字进行重排序
-    # if all the image names are numbers, sort by the value rather than ascetically
-    # having sorted inputs means that the outputs are sorted in test mode
-    if all(get_name(path).isdigit() for path in input_paths):
-        input_paths = sorted(input_paths, key=lambda path: int(get_name(path)))
-    else:
-        input_paths = sorted(input_paths)
-
     with tf.name_scope("load_images"):  # name_scope() 只会对节点的 name 产生影响；不会影响作用域，参见：https://www.jianshu.com/p/635d95b34e14
-        # 读取图片，解码图片，并将其归一化到 [-1, 1]
-        path_queue = tf.train.string_input_producer(input_paths, shuffle=a.mode == "train")  # 将一堆文件名整合成一个python queue（队列）
-        reader = tf.WholeFileReader()  # 创建reader用于读取上一行创建的队列，参见：https://blog.csdn.net/xuan_zizizi/article/details/78418351, https://blog.csdn.net/houyanhua1/article/details/88194016
-        paths, contents = reader.read(path_queue)  # 用reader读取queue，paths为文件路径（包含最后的文件名），contents为图片的实际内容，参见：https://blog.csdn.net/xuan_zizizi/article/details/78418351
-        raw_input = decode(contents)  # 对批量图片进行解码，得到图片原本的tensor。这样的decode得到的格式为uint8格式。
-        raw_input = tf.image.convert_image_dtype(raw_input, dtype=tf.float32)  # 将图片的像素值转换为区间在0-1之间的float32格式（归一化）
-
-        PreprocessLocation = "/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/PreprocessDir/Preprocess.csv"
-        Dataset_b = tf.keras.utils.get_file("Preprocess.csv", PreprocessLocation)
-        
-        # 当图片是3通道时，才执行with下一行的语句。疑问：这里的tf.identity的作用尚不明晰，大致意思为将一个tensor转换为了op
-        # 参见：https://www.jianshu.com/p/9de22c907795 https://www.cnblogs.com/hellcat/p/8568035.html
-        # 参见：https://www.jianshu.com/p/1938a958d986 https://blog.csdn.net/fyq201749/article/details/82118013
-        assertion = tf.assert_equal(tf.shape(raw_input)[2], 3, message="image does not have 3 channels")  # 参见：https://blog.csdn.net/fyq201749/article/details/82118013
-        with tf.control_dependencies([assertion]):
-            raw_input = tf.identity(raw_input)
-
-        # raw_input在被计算之前，是没有shape的，这里将其赋予了3，表示该图片是三通道的（这个由正上方的代码保证）。
-        raw_input.set_shape([None, None, 3])
-        # break apart image pair and move to range [-1, 1]
-        width = tf.shape(raw_input)[1]  # [height, width, channels]
-        a_images = Dataset_b  # ‘//’整数除法，这里是将一对图片的左边，切下来，并归一化到 [-1, 1]。下面是对右半的图像做处理
-        b_images = preprocess(raw_input[:, width//2:, :])
-
+        PreprocessALocation = "/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/PreprocessDir/Preprocess_A_Image.csv"
+        PreprocessBLocation = "/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/PreprocessDir/Preprocess_B_Image.csv"
+        Dataset_A = tf.keras.utils.get_file("Preprocess_A_Image.csv", PreprocessALocation)
+        Dataset_B = tf.keras.utils.get_file("Preprocess_B_Image.csv", PreprocessBLocation)
+        a_images = Dataset_A
+        b_images = Dataset_B
     # 根据方向，设置输入、输出
     if a.which_direction == "AtoB":
         inputs, targets = [a_images, b_images]
@@ -301,7 +139,6 @@ def load_examples():
         inputs, targets = [b_images, a_images]
     else:
         raise Exception("invalid direction")
-
     # synchronize seed for image operations so that we do the same operations to both
     # input and output images
     seed = random.randint(0, 2**31 - 1)
@@ -311,20 +148,9 @@ def load_examples():
         r = image
         if a.flip:  # 需要将图片反转的话，就左右翻转
             r = tf.image.random_flip_left_right(r, seed=seed)
-
         # area produces a nice downscaling, but does nearest neighbor for upscaling
         # assume we're going to be doing downscaling here
         r = tf.image.resize_images(r, [a.scale_size, a.scale_size], method=tf.image.ResizeMethod.AREA)
-
-        # tf.cast()用于转换数据类型
-        # tf.floor()向下取整
-        offset = tf.cast(tf.floor(tf.random_uniform([2], 0, a.scale_size - CROP_SIZE + 1, seed=seed)), dtype=tf.int32)
-        if a.scale_size > CROP_SIZE:
-            r = tf.image.crop_to_bounding_box(r, offset[0], offset[1], CROP_SIZE, CROP_SIZE)  # 设置起点、剪裁大小，然后剪裁图片
-        elif a.scale_size < CROP_SIZE:
-            raise Exception("scale size cannot be less than crop size")
-        return r
-
     with tf.name_scope("input_images"):
         input_images = transform(inputs)
 
@@ -713,6 +539,8 @@ def main():
     # inputs and targets are [batch_size, height, width, channels]
     model = create_model(examples.inputs, examples.targets)
 
+
+'''
     # undo colorization splitting on images that we use for display/output
     if a.lab_colorization:  # 待解析：该分支目前未使用过，所以暂时不管它
         if a.which_direction == "AtoB":
@@ -735,7 +563,7 @@ def main():
         inputs = deprocess(examples.inputs)
         targets = deprocess(examples.targets)
         outputs = deprocess(model.outputs)
-
+'''
     # 将image的像素值格式转换为uint8。
     # 将图片变回原来的比例（可选）
     def convert(image):
@@ -927,9 +755,5 @@ def main():
                     print("saving model")
                     # 疑问：关于下面是如何save的，尚且不明，待研究
                     saver.save(sess, os.path.join(a.output_dir, "model"), global_step=sv.global_step)
-
-                # 疑问：关于什么时候才会触发下面的should_stop()，尚且不明。
-                if sv.should_stop():
-                    break
 main()
 
