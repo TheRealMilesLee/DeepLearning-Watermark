@@ -75,17 +75,15 @@ def gen_conv(batch_input, out_channels):
         # tf.layers.conv2d()，参见：https://blog.csdn.net/gqixf/article/details/80519912
         return tf.keras.layers.Conv2D(batch_input, out_channels, kernel_size=4, strides=(2, 2), padding="same", kernel_initializer=initializer)
 
-
 def gen_deconv(batch_input, out_channels):
     # [batch, in_height, in_width, in_channels] => [batch, out_height, out_width, out_channels]
     initializer = tf.random_normal_initializer(0, 0.02)
     if a.separable_conv:
         _b, h, w, _c = batch_input.shape
-        resized_input = tf.image.resize_images(batch_input, [h * 2, w * 2], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
-        return tf.layers.separable_conv2d(resized_input, out_channels, kernel_size=4, strides=(1, 1), padding="same", depthwise_initializer=initializer, pointwise_initializer=initializer)
+        resized_input = tf.image.resize(batch_input, [h * 2, w * 2], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+        return tf.keras.layers.SeparableConv2D(resized_input, out_channels, kernel_size=4, strides=(1, 1), padding="same", depthwise_initializer=initializer, pointwise_initializer=initializer)
     else:
-        return tf.layers.conv2d_transpose(batch_input, out_channels, kernel_size=4, strides=(2, 2), padding="same", kernel_initializer=initializer)
-
+        return tf.keras.layers.Conv2DTranspose(batch_input, out_channels, kernel_size=4, strides=(2, 2), padding="same", kernel_initializer=initializer)
 
 # a为斜率参数，该函数为标准的leakyRelu，参见：https://blog.csdn.net/sinat_33027857/article/details/80192789
 def lrelu(x, a):
@@ -99,10 +97,8 @@ def lrelu(x, a):
         x = tf.identity(x)
         return (0.5 * (1 + a)) * x + (0.5 * (1 - a)) * tf.abs(x)
 
-
 def batchnorm(inputs):
-    return tf.layers.batch_normalization(inputs, axis=3, epsilon=1e-5, momentum=0.1, training=True, gamma_initializer=tf.random_normal_initializer(1.0, 0.02))
-
+    return tf.keras.layers.BatchNormalization(inputs, axis=3, epsilon=1e-5, momentum=0.1, training=True, gamma_initializer=tf.random_normal_initializer(1.0, 0.02))
 
 def check_image(image):
     # 检查图像是否是3通道彩色图
@@ -150,13 +146,15 @@ def load_examples():
             r = tf.image.random_flip_left_right(r, seed=seed)
         # area produces a nice downscaling, but does nearest neighbor for upscaling
         # assume we're going to be doing downscaling here
-        r = tf.image.resize_images(r, [a.scale_size, a.scale_size], method=tf.image.ResizeMethod.AREA)
+        r = tf.image.resize(r, [a.scale_size, a.scale_size], method=tf.image.ResizeMethod.AREA)
     with tf.name_scope("input_images"):
         input_images = transform(inputs)
 
     with tf.name_scope("target_images"):
         target_images = transform(targets)
-
+    
+    paths = " "
+    input_paths =
     # 使输入的tensor能够以batch的形式运行并输出，参见：https://blog.csdn.net/sinat_29957455/article/details/83152823
     # 疑问：tf.train.batch()函数的作用大概明白了，更深一层的理解，还需实战
     paths_batch, inputs_batch, targets_batch = tf.train.batch([paths, input_images, target_images], batch_size=a.batch_size)
