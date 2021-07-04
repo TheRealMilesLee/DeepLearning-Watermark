@@ -143,7 +143,7 @@ def load_examples():
     input_paths = glob.glob(os.path.join(a.input_dir, "*.jpg"))
     # 使输入的tensor能够以batch的形式运行并输出，参见：https://blog.csdn.net/sinat_29957455/article/details/83152823
     # 疑问：tf.train.batch()函数的作用大概明白了，更深一层的理解，还需实战
-    paths_batch, inputs_batch, targets_batch = tf.train.batch([paths, input_images, target_images], batch_size=a.batch_size)
+    paths_batch, inputs_batch, targets_batch = tf.data.Dataset.batch([paths, input_images, target_images], batch_size=a.batch_size)
     steps_per_epoch = int(math.ceil(len(input_paths) / a.batch_size))  # 计算每个epoch至少需要的step数
     return Examples( paths=paths_batch, inputs=inputs_batch, targets=targets_batch, count=len(input_paths), steps_per_epoch=steps_per_epoch)
 
