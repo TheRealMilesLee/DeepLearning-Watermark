@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import argparse
+import glob
 import os
 import json
 import random
@@ -135,43 +136,19 @@ def load_examples():
         inputs, targets = [b_images, a_images]
     else:
         raise Exception("invalid direction")
-    # synchronize seed for image operations so that we do the same operations to both
-    # input and output images
-    seed = random.randint(0, 2**31 - 1)
     Examples = collections.namedtuple("Examples", "paths, inputs, targets, count, steps_per_epoch")
-    # 根据参数设置，决定是否对图片进行反转、放大剪裁
-    def transform(image):
-        r = image
-        if a.flip:  # 需要将图片反转的话，就左右翻转
-            r = tf.image.random_flip_left_right(r, seed=seed)
-        # area produces a nice downscaling, but does nearest neighbor for upscaling
-        # assume we're going to be doing downscaling here
-        r = tf.image.resize(r, [a.scale_size, a.scale_size], method=tf.image.ResizeMethod.AREA)
-    with tf.name_scope("input_images"):
-        input_images = transform(inputs)
-
-    with tf.name_scope("target_images"):
-        target_images = transform(targets)
-    
-    paths = " "
-    input_paths =
+    input_images = inputs
+    target_images = targets
+    paths = "/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/facades/test"
+    input_paths = glob.glob(os.path.join(a.input_dir, "*.jpg"))
     # 使输入的tensor能够以batch的形式运行并输出，参见：https://blog.csdn.net/sinat_29957455/article/details/83152823
     # 疑问：tf.train.batch()函数的作用大概明白了，更深一层的理解，还需实战
     paths_batch, inputs_batch, targets_batch = tf.train.batch([paths, input_images, target_images], batch_size=a.batch_size)
     steps_per_epoch = int(math.ceil(len(input_paths) / a.batch_size))  # 计算每个epoch至少需要的step数
-
-    return Examples(
-        paths=paths_batch,
-        inputs=inputs_batch,
-        targets=targets_batch,
-        count=len(input_paths),
-        steps_per_epoch=steps_per_epoch,
-    )
-
+    return Examples( paths=paths_batch, inputs=inputs_batch, targets=targets_batch, count=len(input_paths), steps_per_epoch=steps_per_epoch)
 
 def create_generator(generator_inputs, generator_outputs_channels):
     layers = []
-
     # 创建 G 的编码部分的第一层
     # encoder_1: [batch, 256, 256, in_channels] => [batch, 128, 128, ngf]
     with tf.variable_scope("encoder_1"):
