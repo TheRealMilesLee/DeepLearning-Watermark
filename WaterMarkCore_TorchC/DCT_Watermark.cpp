@@ -6,7 +6,9 @@
 
 void DCT_Watermark::Generator()
 {
-  cv::Mat algorithm = cv::dct();
+  cv::Mat Input = "/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/facades/test";
+  cv::Mat DCTEDWaterMark;
+  
 }
 
 void DCT_Watermark::GetCSVFromDisk()
