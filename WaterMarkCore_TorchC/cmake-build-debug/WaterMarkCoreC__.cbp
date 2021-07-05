@@ -5,7 +5,7 @@
 		<Option title="WaterMarkCoreC__"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Torch\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\public\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Torch\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\public\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug"/>
@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/local/Cellar/opencv/4.5.2_4/include/opencv4"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/local/include/torch/csrc/api/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
@@ -66,6 +67,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/local/Cellar/opencv/4.5.2_4/include/opencv4"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/local/include/torch/csrc/api/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
@@ -93,6 +95,18 @@
 		</Unit>
 		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/lib/cmake/opencv4/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
 		</Unit>
 		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Torch/TorchConfig.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Torch\"/>

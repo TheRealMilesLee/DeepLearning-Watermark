@@ -6,7 +6,7 @@
 
 void DCT_Watermark::Generator()
 {
-
+  cv::Mat algorithm = cv::dct();
 }
 
 void DCT_Watermark::GetCSVFromDisk()

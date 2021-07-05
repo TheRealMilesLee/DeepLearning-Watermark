@@ -2,7 +2,7 @@ import os
 import cv2
 import argparse
 import numpy as np
-from watermarks import lsb, dft, dct
+from watermarks import dct
 
 if __name__ == '__main__':
     alg = dct.DCT()

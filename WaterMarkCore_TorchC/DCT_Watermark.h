@@ -5,6 +5,7 @@
 #include<iostream>
 #include <torch/torch.h>
 #include <vector>
+#include <opencv2/opencv.hpp>
 
 class DCT_Watermark
 {
