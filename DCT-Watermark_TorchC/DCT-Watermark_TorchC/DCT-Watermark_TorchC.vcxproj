@@ -152,6 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DCT-Watermark_TorchC.cpp" />
+    <ClCompile Include="DCT_Watermark.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DCT_Watermark.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

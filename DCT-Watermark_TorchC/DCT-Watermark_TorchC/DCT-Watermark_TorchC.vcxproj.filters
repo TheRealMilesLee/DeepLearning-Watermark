@@ -18,5 +18,13 @@
     <ClCompile Include="DCT-Watermark_TorchC.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DCT_Watermark.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DCT_Watermark.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
