@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.19)
 project(WaterMarkCoreC__)
 
 find_package(OpenCV)
-find_package(Torch)
+find_package(Torch REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
 include_directories("${OpenCV_INCLUDE_DIRS} ${Torch_INCLUDE_DIRS}")
