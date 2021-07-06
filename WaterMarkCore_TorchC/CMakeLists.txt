@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.19)
 project(WaterMarkCoreC__)
 
-find_package(OpenCV REQUIRED)
-find_package(Torch REQUIRED)
+find_package(OpenCV)
+find_package(Torch)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
-include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories("${OpenCV_INCLUDE_DIRS} ${Torch_INCLUDE_DIRS}")
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(WaterMarkCore_TorchC DCT-Watermark_Core.cpp DCT_Watermark.cpp DCT_Watermark.h)
