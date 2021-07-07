@@ -5,7 +5,7 @@
 		<Option title="WaterMarkCoreC__"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\Program Files\;CMake Files\Program Files\openCV-MinGW\;CMake Files\Program Files\openCV-MinGW\x64\;CMake Files\Program Files\openCV-MinGW\x64\mingw\;CMake Files\Program Files\openCV-MinGW\x64\mingw\lib\;CMake Files\Program Files\libtorch\;CMake Files\Program Files\libtorch\share\;CMake Files\Program Files\libtorch\share\cmake\;CMake Files\Program Files\libtorch\share\cmake\Torch\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\public\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\FindCUDA\;CMake Files\cmake-build-debug\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Program Files\;CMake Files\Program Files\libtorch\;CMake Files\Program Files\libtorch\share\;CMake Files\Program Files\libtorch\share\cmake\;CMake Files\Program Files\libtorch\share\cmake\Torch\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\public\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\FindCUDA\;CMake Files\Program Files\opencv-4.5.2\;CMake Files\Program Files\opencv-4.5.2\Build\;CMake Files\cmake-build-debug\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug"/>
@@ -34,7 +34,24 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Program Files/openCV-MinGW/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/Build"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/core/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/flann/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/imgproc/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/ml/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/photo/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/dnn/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/features2d/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/imgcodecs/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/videoio/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/calib3d/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/highgui/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/objdetect/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/stitching/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/ts/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/video/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/gapi/include"/>
 					<Add directory="C:/Program Files/libtorch/include"/>
 					<Add directory="C:/Program Files/libtorch/include/torch/csrc/api/include"/>
 					<Add directory="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.3/include"/>
@@ -59,7 +76,24 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Program Files/openCV-MinGW/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/Build"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/core/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/flann/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/imgproc/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/ml/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/photo/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/dnn/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/features2d/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/imgcodecs/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/videoio/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/calib3d/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/highgui/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/objdetect/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/stitching/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/ts/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/video/include"/>
+					<Add directory="C:/Program Files/opencv-4.5.2/modules/gapi/include"/>
 					<Add directory="C:/Program Files/libtorch/include"/>
 					<Add directory="C:/Program Files/libtorch/include/torch/csrc/api/include"/>
 					<Add directory="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.3/include"/>
@@ -100,21 +134,6 @@
 		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/openCV-MinGW/OpenCVConfig-version.cmake">
-			<Option virtualFolder="CMake Files\Program Files\openCV-MinGW\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/openCV-MinGW/OpenCVConfig.cmake">
-			<Option virtualFolder="CMake Files\Program Files\openCV-MinGW\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/openCV-MinGW/x64/mingw/lib/OpenCVConfig.cmake">
-			<Option virtualFolder="CMake Files\Program Files\openCV-MinGW\x64\mingw\lib\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/openCV-MinGW/x64/mingw/lib/OpenCVModules-release.cmake">
-			<Option virtualFolder="CMake Files\Program Files\openCV-MinGW\x64\mingw\lib\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/openCV-MinGW/x64/mingw/lib/OpenCVModules.cmake">
-			<Option virtualFolder="CMake Files\Program Files\openCV-MinGW\x64\mingw\lib\"/>
-		</Unit>
 		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Torch/TorchConfig.cmake">
 			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Torch\"/>
 		</Unit>
@@ -127,7 +146,7 @@
 		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Caffe2ConfigVersion.cmake">
 			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Caffe2Targets-release.cmake">
+		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Caffe2Targets-debug.cmake">
 			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\"/>
 		</Unit>
 		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Caffe2Targets.cmake">
@@ -168,6 +187,15 @@
 		</Unit>
 		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Modules_CUDA_fix/upstream/FindCUDA/select_compute_arch.cmake">
 			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\FindCUDA\"/>
+		</Unit>
+		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/opencv-4.5.2/Build/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\Program Files\opencv-4.5.2\Build\"/>
+		</Unit>
+		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/opencv-4.5.2/Build/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\Program Files\opencv-4.5.2\Build\"/>
+		</Unit>
+		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/opencv-4.5.2/Build/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\Program Files\opencv-4.5.2\Build\"/>
 		</Unit>
 		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/detect_cuda_compute_capabilities.cpp">
 			<Option virtualFolder="CMake Files\cmake-build-debug\"/>
