@@ -48,7 +48,6 @@ class DCT(BaseWatermark):
     B = self.block_size
     h2, w2 = h1 // B, w1 // B
     watermark_ = np.zeros((h2, w2))
-    
     for i in range(h2):
       for j in range(w2):
         sub_image_wm = image_wm[i * B: (i + 1) * B, j * B: (j + 1) * B].astype('float32')

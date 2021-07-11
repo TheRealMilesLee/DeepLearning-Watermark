@@ -1,3 +1,4 @@
+import glob
 import os
 import cv2
 from watermarkAlgorithmLibrary import dct
@@ -11,7 +12,8 @@ if __name__ == '__main__':
   
   if not os.path.exists(output_path):
     os.mkdir(output_path)
-  
+    
+  file_name = glob.glob(source_path)
   i = 0
   for file_name in os.listdir(source_path):
     image_path = os.path.join(source_path, file_name)
