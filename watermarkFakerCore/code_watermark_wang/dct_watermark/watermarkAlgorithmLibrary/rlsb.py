@@ -1,6 +1,6 @@
 import numpy as np
 from skimage.measure import compare_ssim
-from watermarks.base_watermark import BaseWatermark
+from base_watermark import BaseWatermark
 
 
 class RobustLSB(BaseWatermark):

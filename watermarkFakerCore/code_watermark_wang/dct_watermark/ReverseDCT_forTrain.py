@@ -1,7 +1,7 @@
 import os
 import cv2
 import argparse
-from watermarks import dct
+from watermarkAlgorithmLibrary import dct
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--origin_path", default="/home/wangruowei/PycharmProjects/watermark2020/data/gray/test")

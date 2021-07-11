@@ -1,5 +1,5 @@
 import numpy as np
-from watermarks.base_watermark import BaseWatermark
+from base_watermark import BaseWatermark
 
 
 class LSBMatching(BaseWatermark):

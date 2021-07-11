@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from watermarks.core import BaseWatermark
+from base_watermark import BaseWatermark
 
 
 class DCT(BaseWatermark):
