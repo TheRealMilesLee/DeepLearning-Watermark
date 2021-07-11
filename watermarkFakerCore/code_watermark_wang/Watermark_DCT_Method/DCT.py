@@ -5,7 +5,7 @@ from watermarkAlgorithmLibrary import dct
 if __name__ == '__main__':
   alg = dct.DCT()
   source_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DCT/images/Source"
-  watermark_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DCT/images/Watermark"
+  watermark_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DCT/images/Watermark/lena.png"
   output_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DCT/images/Output"
   RGB = 0
   
@@ -26,7 +26,13 @@ if __name__ == '__main__':
     cv2.imshow('Watermark', watermarkLena)
     cv2.waitKey(0)
     
-    watermarked_image = alg.embed(image, watermarkLena)
+    ResizeWatermarkHeight = watermarkLena.shape[0] / 8
+    ResizeWatermarkWidth = watermarkLena.shape[1] / 8
+    NewWatermarkImage = (ResizeWatermarkWidth, ResizeWatermarkHeight)
+    
+    resized = cv2.resize(watermarkLena, None, fx = 0.125, fy = 0.125, interpolation = cv2.INTER_AREA)
+    
+    watermarked_image = alg.embed(image, resized)
     
     cv2.imwrite(image_wm_path, watermarked_image)
     

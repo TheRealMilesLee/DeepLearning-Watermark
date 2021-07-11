@@ -22,7 +22,7 @@ class DCT(BaseWatermark):
             raise NotImplementedError("Block size should be 8; the other values version maybe implemented in the future")
 
         if self.save_watermark:
-            cv2.imwrite('./images/dct_watermark.png', (watermark * 255).astype('uint8'))
+            cv2.imwrite('./images/Watermark_DCT_Method.png', (watermark * 255).astype('uint8'))
 
         B = self.block_size  # temporary value
         image_wm = np.zeros(image.shape)

@@ -70,7 +70,7 @@ python ../dct_watermark/DCT-de_forTrain.py \
 #                                   --mode="test"\
 #                                   --l1_weight=100.0
 #
-#python ../dct_watermark/DCT-de_forTrain.py \
+#python ../Watermark_DCT_Method/DCT-de_forTrain.py \
 #--source_path="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/test_newDCT_noTanh_bn(l1_weight=100)/images" \
 #--output_path="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/extract_newDCT_noTanh_bn(l1_weight=100)"
 #
@@ -87,7 +87,7 @@ python ../dct_watermark/DCT-de_forTrain.py \
 #                                   --mode="test" \
 #                                   --l1_weight=200.0
 #
-#python ../dct_watermark/DCT-de_forTrain.py \
+#python ../Watermark_DCT_Method/DCT-de_forTrain.py \
 #--source_path="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/test_newDCT_noTanh_bn(l1_weight=200)/images" \
 #--output_path="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/extract_newDCT_noTanh_bn(l1_weight=200)"
 #
@@ -104,7 +104,7 @@ python ../dct_watermark/DCT-de_forTrain.py \
 #                                   --mode="test" \
 #                                   --l1_weight=300.0
 #
-#python ../dct_watermark/DCT-de_forTrain.py \
+#python ../Watermark_DCT_Method/DCT-de_forTrain.py \
 #--source_path="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/test_newDCT_noTanh_bn(l1_weight=300)/images" \
 #--output_path="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/extract_newDCT_noTanh_bn(l1_weight=300)"
 #
@@ -121,7 +121,7 @@ python ../dct_watermark/DCT-de_forTrain.py \
 #                                   --mode="test" \
 #                                   --l1_weight=50.0
 #
-#python ../dct_watermark/DCT-de_forTrain.py \
+#python ../Watermark_DCT_Method/DCT-de_forTrain.py \
 #--source_path="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/test_newDCT_noTanh_bn(l1_weight=50)/images" \
 #--output_path="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/extract_newDCT_noTanh_bn(l1_weight=50)"
 

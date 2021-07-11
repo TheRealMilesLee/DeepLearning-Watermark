@@ -34,7 +34,7 @@ def new_log2(x):
     return y
 
 
-image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/dct_watermark/images/lena.png"
+image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/Watermark_DCT_Method/images/lena.png"
 
 image = cv.imread(image_path, flags=0)
 image = image.astype(np.float32)
@@ -57,7 +57,7 @@ plt.subplot(122), plt.imshow(image_dct1_processsed2, "gray"), plt.title("image_d
 
 '''↓，测试，求取图像的均值和方差'''
 '''结论：进行z-sore标准化后，变成了正太分布，均值为0，最大值为2.4，最小值为-2.0、'''
-# image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/dct_watermark/images/lena.png"
+# image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/Watermark_DCT_Method/images/lena.png"
 #
 # image = cv.imread(image_path, flags=0)
 # image = image.astype(np.float32)
@@ -70,7 +70,7 @@ plt.subplot(122), plt.imshow(image_dct1_processsed2, "gray"), plt.title("image_d
 
 '''↓，测试，将dct()后的值，加512，再log()后结果怎样。'''
 '''结论：进行上述操作后，图像完全黑掉了，从值上来看，log()后的值，差距很小'''
-# image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/dct_watermark/images/lena.png"
+# image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/Watermark_DCT_Method/images/lena.png"
 #
 # image = cv.imread(image_path, flags=0)
 # image = image.astype(np.float32)
@@ -94,7 +94,7 @@ plt.subplot(122), plt.imshow(image_dct1_processsed2, "gray"), plt.title("image_d
 
 '''↓，如果将dct()运算后的值取绝对值，然后再转换回去会怎样。'''
 '''结论：会出现黑屏现象'''
-# image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/dct_watermark/images/lena.png"
+# image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/Watermark_DCT_Method/images/lena.png"
 #
 # image = cv.imread(image_path, flags=0)
 # image = image.astype(np.float32)
@@ -112,7 +112,7 @@ plt.subplot(122), plt.imshow(image_dct1_processsed2, "gray"), plt.title("image_d
 
 '''↓，测试log运算后得到的结果怎样。'''
 '''结论：数据的动态范围变小，而且分布良好'''
-# image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/dct_watermark/images/lena.png"
+# image_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/Watermark_DCT_Method/images/lena.png"
 #
 # image = cv.imread(image_path, flags=0)
 # image = image.astype(np.float32)
