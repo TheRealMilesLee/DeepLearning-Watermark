@@ -1,13 +1,11 @@
-import random
 import numpy as np
 import cv2
 import os
 import glob
-import shutil
 from tqdm import tqdm
 
 # 水印图片的地址，并将其读取
-watermark_path = "/home/wangruowei/PycharmProjects/watermark2020/code_watermark/dft_watermark/lena_grey_128.png"
+watermark_path = ""
 watermark = cv2.imread(watermark_path, 0)  # 灰度水印
 w_height, w_width = watermark.shape[0], watermark.shape[1]
 
@@ -40,7 +38,6 @@ def fourier_watermark(image):
         for j in range(w_width):
             tmp[i][j] = watermark[i][j]
             tmp[i_height - i - 1][i_width - 1 - j] = tmp[i][j]
-    # cv2.imwrite(r'board_wm.png', tmp)
 
     # 调试alpha后发现规律：alpha越大图片越清晰，但亮度越暗，反之则相反
     alpha = 5  # 水印图片加进去的强度(混合的比例因子)
@@ -56,8 +53,8 @@ def fourier_watermark(image):
 ————————————分割线：以上是傅里叶变换相关的处理部分——————————
 '''
 
-input_path = "/home/wangruowei/PycharmProjects/watermark2020/data/gray/test"
-output_path = "/home/wangruowei/PycharmProjects/watermark2020/data/watermark_dft"
+input_path = ""
+output_path = ""
 
 if not os.path.exists(output_path):
     os.mkdir(output_path)

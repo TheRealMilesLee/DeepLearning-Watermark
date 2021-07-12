@@ -5,203 +5,138 @@
 		<Option title="WaterMarkCoreC__"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\Program Files\;CMake Files\Program Files\libtorch\;CMake Files\Program Files\libtorch\share\;CMake Files\Program Files\libtorch\share\cmake\;CMake Files\Program Files\libtorch\share\cmake\Torch\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\public\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\;CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\FindCUDA\;CMake Files\Program Files\opencv-4.5.2\;CMake Files\Program Files\opencv-4.5.2\Build\;CMake Files\cmake-build-debug\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Torch\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\;CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\public\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug"/>
+				<Option working_dir="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="WaterMarkCore_TorchC">
-				<Option output="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/WaterMarkCore_TorchC.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Program Files/opencv-4.5.2/Build"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/core/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/flann/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/imgproc/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/ml/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/photo/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/dnn/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/features2d/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/imgcodecs/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/videoio/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/calib3d/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/highgui/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/objdetect/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/stitching/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/ts/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/video/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/gapi/include"/>
-					<Add directory="C:/Program Files/libtorch/include"/>
-					<Add directory="C:/Program Files/libtorch/include/torch/csrc/api/include"/>
-					<Add directory="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.3/include"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 WaterMarkCore_TorchC"/>
-					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="WaterMarkCore_TorchC/fast">
-				<Option output="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/WaterMarkCore_TorchC.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Program Files/opencv-4.5.2/Build"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/core/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/flann/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/imgproc/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/ml/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/photo/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/dnn/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/features2d/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/imgcodecs/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/videoio/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/calib3d/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/highgui/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/objdetect/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/stitching/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/ts/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/video/include"/>
-					<Add directory="C:/Program Files/opencv-4.5.2/modules/gapi/include"/>
-					<Add directory="C:/Program Files/libtorch/include"/>
-					<Add directory="C:/Program Files/libtorch/include/torch/csrc/api/include"/>
-					<Add directory="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.3/include"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 WaterMarkCore_TorchC/fast"/>
-					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug"/>
+				<Option working_dir="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/mingw64/bin/mingw32-make.exe -f &quot;D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="WaterMarkCore_TorchC">
+				<Option output="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/WaterMarkCore_TorchC" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/Cellar/opencv/4.5.3/include/opencv4"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/include/torch/csrc/api/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 WaterMarkCore_TorchC"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="WaterMarkCore_TorchC/fast">
+				<Option output="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/WaterMarkCore_TorchC" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/Cellar/opencv/4.5.3/include/opencv4"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/include/torch/csrc/api/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 WaterMarkCore_TorchC/fast"/>
+					<CompileFile command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j8 -f &quot;/Users/arkia/ComputerScienceRelated/Watermark\ Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/DCT-Watermark_Core.cpp">
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/DCT-Watermark_Core.cpp">
 			<Option target="WaterMarkCore_TorchC"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/DCT_Watermark.cpp">
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/DCT_Watermark.cpp">
 			<Option target="WaterMarkCore_TorchC"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/DCT_Watermark.h">
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/DCT_Watermark.h">
 			<Option target="WaterMarkCore_TorchC"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/CMakeLists.txt">
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Torch/TorchConfig.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Torch\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Torch/TorchConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Torch\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Torch/TorchConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Torch\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Torch/TorchConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Torch\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Caffe2Config.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Caffe2/Caffe2Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Caffe2ConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Caffe2/Caffe2ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Caffe2Targets-debug.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Caffe2/Caffe2Targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Caffe2Targets.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Caffe2/Caffe2Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/public/cuda.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\public\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Caffe2/public/mkl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\public\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/public/mkl.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\public\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Caffe2/public/protobuf.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\public\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/public/mkldnn.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\public\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Caffe2/public/threads.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\public\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/public/threads.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\public\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/share/cmake/Caffe2/public/utils.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\cmake\Caffe2\public\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/public/utils.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\public\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Modules_CUDA_fix/FindCUDA.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Modules_CUDA_fix/FindCUDNN.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Modules_CUDA_fix/upstream/CMakeInitializeConfigs.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Modules_CUDA_fix/upstream/FindCUDA.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Modules_CUDA_fix/upstream/FindPackageHandleStandardArgs.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Modules_CUDA_fix/upstream/FindPackageMessage.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/libtorch/share/cmake/Caffe2/Modules_CUDA_fix/upstream/FindCUDA/select_compute_arch.cmake">
-			<Option virtualFolder="CMake Files\Program Files\libtorch\share\cmake\Caffe2\Modules_CUDA_fix\upstream\FindCUDA\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/opencv-4.5.2/Build/OpenCVConfig-version.cmake">
-			<Option virtualFolder="CMake Files\Program Files\opencv-4.5.2\Build\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/opencv-4.5.2/Build/OpenCVConfig.cmake">
-			<Option virtualFolder="CMake Files\Program Files\opencv-4.5.2\Build\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/Program Files/opencv-4.5.2/Build/OpenCVModules.cmake">
-			<Option virtualFolder="CMake Files\Program Files\opencv-4.5.2\Build\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/detect_cuda_compute_capabilities.cpp">
-			<Option virtualFolder="CMake Files\cmake-build-debug\"/>
-		</Unit>
-		<Unit filename="D:/CS-Related/Watermark Faker/DeepLearning-Watermake/WaterMarkCore_TorchC/cmake-build-debug/detect_cuda_version.cc">
-			<Option virtualFolder="CMake Files\cmake-build-debug\"/>
+		<Unit filename="/Users/arkia/ComputerScienceRelated/Watermark Faker/DeepLearning-Watermark/WaterMarkCore_TorchC/../../../../../../usr/local/lib/cmake/opencv4/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
