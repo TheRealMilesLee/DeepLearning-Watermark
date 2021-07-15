@@ -3,9 +3,9 @@ import cv2
 import os
 import glob
 
-original_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DFT/Train images/Source"  # 与水印图片配对的原始图片
-watermarked_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DFT/Train images/Output/5_wDFT.png"  # 加了水印的图片
-output_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DFT/Train images/Output/Reverse"  # 输出提取的水印的地方
+original_path = "/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/DFT/Train images/Source"  # 与水印图片配对的原始图片
+watermarked_path = "/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/DFT/Train images/Output/5_wDFT.png"  # 加了水印的图片
+output_path = "/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/DFT/Train images/Output/Reverse"  # 输出提取的水印的地方
 
 def de_fourier_watermark(OriginalImage, WatermarkedImage):
     OriginalImage_Fourier = np.fft.fft2(OriginalImage, axes=(0, 1))
@@ -15,7 +15,7 @@ def de_fourier_watermark(OriginalImage, WatermarkedImage):
     return result
 
 # 读取与水印匹配的源文件
-Source_Filename = glob.glob(os.path.join(original_path, "*png"))
+Source_Filename = glob.glob(os.path.join(original_path, "*bmp"))
 Source = cv2.imread(Source_Filename)
 cv2.imshow('Source File', Source)
 # 读取带水印的图片文件
