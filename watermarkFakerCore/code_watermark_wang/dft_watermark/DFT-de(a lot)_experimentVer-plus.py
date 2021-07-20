@@ -10,7 +10,7 @@ def de_fourier_watermark(image, wmed):
     image_f = np.fft.fft2(image, axes=(0, 1))
     wmed_f = np.fft.fft2(wmed, axes=(0, 1))
 
-    alpha, i_height, i_width = 5, image.shape[0], image.shape[1]
+    alpha = 5
 
     result = np.real((wmed_f - image_f) / alpha)
 
