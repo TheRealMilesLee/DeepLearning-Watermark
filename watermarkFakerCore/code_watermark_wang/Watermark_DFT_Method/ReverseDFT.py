@@ -42,4 +42,5 @@ for order in range(len(Source_Filename)):
     name = os.path.basename(Source_Filename[order]).split(".")[0]
     save_path = os.path.join(output_path, name + "_de.png")
     print(save_path)
+    
     cv2.imwrite(save_path, res1)
