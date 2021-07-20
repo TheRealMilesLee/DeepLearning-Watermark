@@ -35,7 +35,7 @@ def fourier_watermark(image):
       tmp[i_height - i - 1][i_width - 1 - j] = tmp[i][j]
   
   # 调试alpha后发现规律：alpha越大图片越清晰，但亮度越暗，反之则相反
-  alpha = 5  # 水印图片加进去的强度(混合的比例因子)
+  alpha = 15  # 水印图片加进去的强度(混合的比例因子)
   result_f = image_f + alpha * tmp
   
   # 反傅里叶变换i_height, i_width, i_channel = np.shape(image)
