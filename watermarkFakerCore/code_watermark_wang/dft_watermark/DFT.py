@@ -12,7 +12,6 @@ w_height, w_width = watermark.shape[0], watermark.shape[1]
 '''
 ————————————分割线：以下是傅里叶变换相关的处理部分——————————
 '''
-
 # 对于彩图，应该对每个色道分别做傅里叶变换，再嵌入水印
 # 而np.fft.fft2(color_image)中参数axes默认为(-2, -1)，是对width、channel两维度做傅里叶变换，无意义
 # 故axes应为(0, 1)，处理height、width两维
@@ -25,12 +24,9 @@ w_height, w_width = watermark.shape[0], watermark.shape[1]
 
 def fourier_watermark(image):
   i_height, i_width = image.shape[0], image.shape[1]
-  
   # 傅里叶变换
   image_f = np.fft.fft2(image, axes = (0, 1))  # 若输入为灰度图片，可使用默认axes；若彩色，需指定axes=(0, 1)
-  
   tmp = np.zeros(image.shape)
-  
   # 图片经过傅里叶变换后，水印图片直接按像素覆盖到频率域，因为频谱是中心对称的，
   # 所以加水印也要对称的加，具体就是图片分上下两部分，左上加了什么，右下也要加同样的内容
   for i in range(w_height):
@@ -45,10 +41,7 @@ def fourier_watermark(image):
   # 反傅里叶变换i_height, i_width, i_channel = np.shape(image)
   # w_height, w_width, w_channel = np.shape(watermark)
   result = np.real(np.fft.ifft2(result_f, axes = (0, 1)))
-  
   return result
-
-
 '''
 ————————————分割线：以上是傅里叶变换相关的处理部分——————————
 '''
