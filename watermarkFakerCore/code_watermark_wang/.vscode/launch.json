@@ -2,18 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
+      "name": "Python: 当前文件",
+      "type": "python",
       "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "d:\\CS-Related\\Watermark Faker\\DeepLearning-Watermake\\watermarkFakerCore\\code_watermark_wang",
-      "environment": [],
-      "program": "d:\\CS-Related\\Watermark Faker\\DeepLearning-Watermake\\watermarkFakerCore\\code_watermark_wang\\build\\Debug\\outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
-      "miDebuggerPath": "C:\\Program Files\\mingw64\\bin\\gdb.exe",
-      "externalConsole": false
-    }
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
   ]
 }
