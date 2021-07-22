@@ -12,9 +12,9 @@ import time
 # https://blog.csdn.net/MOU_IT/article/details/80802407，该网页中的部分实现参考了该pix2pix的代码，里面有些注释，可以参考参考。
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--input_dir", default="/workspaces/DeepLearning-Watermake/watermarkFakerCore/code_watermark_wang/Test_Images/facades/test", help="path to folder containing images")
+parser.add_argument("--input_dir", default="D:\CS-Related\Watermark Faker\Test_Images\facades\test", help="path to folder containing images")
 parser.add_argument("--mode", required=False, default="train", choices=["train", "test", "export"])
-parser.add_argument("--output_dir", required=False, default="/workspaces/DeepLearning-Watermake/watermarkFakerCore/code_watermark_wang/Watermark Faker Output", help="where to put output files")
+parser.add_argument("--output_dir", required=False, default="D:\CS-Related\Watermark Faker\Watermark Faker Output", help="where to put output files")
 parser.add_argument("--seed", type=int)
 parser.add_argument("--checkpoint", default=None, help="directory with checkpoint to resume training from or use for testing")
 
