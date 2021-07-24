@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from NeedToKnowWhy.DCT_Watermark.watermarkAlgorithmLibrary import BaseWatermark
+from watermarkAlgorithmLibrary import BaseWatermark
 
 
 class DCT(BaseWatermark):
