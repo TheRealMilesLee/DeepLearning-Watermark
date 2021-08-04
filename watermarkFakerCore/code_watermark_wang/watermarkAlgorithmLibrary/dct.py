@@ -34,7 +34,8 @@ class DCT(BaseWatermark):
     image_wm = np.zeros(image.shape)
     for heightLoop in range(h2):
       for widthLoop in range(w2):
-        sub_image = image[heightLoop * B, (heightLoop + 1) * B, widthLoop * B: (widthLoop + 1) * B]
+        # 针对图片的长和宽嵌入水印
+        sub_image = image[heightLoop * B: (heightLoop + 1) * B, widthLoop * B: (widthLoop + 1) * B]
         sub_image_dct = cv2.dct(sub_image)
         if watermark[heightLoop, widthLoop] == 0:
           if sub_image_dct[3, 3] > sub_image_dct[4, 4]:
