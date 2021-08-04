@@ -27,7 +27,7 @@ class DCT(BaseWatermark):
     
     # 水印图片保存
     if self.save_watermark:
-      cv2.imwrite('./images/Watermark_DCT_Method.png', (watermark * 255).astype('uint8'))
+      cv2.imwrite('/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/WatermarkEmbeddedFiles/DCT', (watermark * 255).astype('uint8'))
     
     B = self.block_size  # temporary value
     # 把图片周围填充一圈0
@@ -36,7 +36,10 @@ class DCT(BaseWatermark):
       for widthLoop in range(w2):
         # 针对图片的长和宽嵌入水印
         sub_image = image[heightLoop * B: (heightLoop + 1) * B, widthLoop * B: (widthLoop + 1) * B]
+        # 对于嵌入水印的图像进行dct变换
         sub_image_dct = cv2.dct(sub_image)
+
+        #异常处理
         if watermark[heightLoop, widthLoop] == 0:
           if sub_image_dct[3, 3] > sub_image_dct[4, 4]:
             temp = sub_image_dct[3, 3]
@@ -50,14 +53,15 @@ class DCT(BaseWatermark):
         image_wm[heightLoop * B: (heightLoop + 1) * B, widthLoop * B: (widthLoop + 1) * B] = cv2.idct(sub_image_dct)
     return image_wm.astype('uint8')
   
-  def extract(self, image_wm, image = None):
-    h1, w1 = image_wm.shape
+  # 从图片中提取水印
+  def extract(self, image_watermarked, image = None):
+    h1, w1 = image_watermarked.shape
     B = self.block_size
     h2, w2 = h1 // B, w1 // B
     watermark_ = np.zeros((h2, w2))
     for i in range(h2):
       for j in range(w2):
-        sub_image_wm = image_wm[i * B: (i + 1) * B, j * B: (j + 1) * B].astype('float32')
+        sub_image_wm = image_watermarked[i * B: (i + 1) * B, j * B: (j + 1) * B].astype('float32')
         sub_image_wm_dct = cv2.dct(sub_image_wm)
         if sub_image_wm_dct[3, 3] < sub_image_wm_dct[4, 4]:
           watermark_[i, j] = 0
