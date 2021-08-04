@@ -3,12 +3,13 @@ import cv2
 from watermarkAlgorithmLibrary import dct
 
 if __name__ == '__main__':
-  alg = dct.DCT()
+  # 源文件位置
   source_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DCT/images/Source"
   watermark_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DCT/images/Watermark/lena.png"
   output_path = "D:/CS-Related/Watermark Faker/TestFolder/Test_Images/DCT/images/Output"
+  # 统一设置为灰度值
   RGB = 0
-  
+  # 如果输出的位置文件夹不存在就创建一个新的
   if not os.path.exists(output_path):
     os.mkdir(output_path)
     
