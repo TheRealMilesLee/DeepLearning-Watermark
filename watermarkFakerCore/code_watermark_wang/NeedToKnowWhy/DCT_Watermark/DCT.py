@@ -15,10 +15,13 @@ if __name__ == '__main__':
     
   i = 0
   for file_name in os.listdir(source_path):
+    # 获取文件夹下的所有文件名
     image_path = os.path.join(source_path, file_name)
+    # 拆分文件名，以 "." 为切分标志
     tmp_str = file_name.split(".")[0]
+    # 确定输出的文件名
     image_wm_path = os.path.join(output_path, tmp_str + "_wDCT.png")
-    
+    # 读取文件
     image = cv2.imread(image_path, flags = RGB)
     cv2.imshow('Image', image)
     cv2.waitKey(0)
@@ -33,7 +36,7 @@ if __name__ == '__main__':
     
     resized = cv2.resize(watermarkLena, None, fx = 0.125, fy = 0.125, interpolation = cv2.INTER_AREA)
     
-    watermarked_image = alg.embed(image, resized)
+    watermarked_image = dct.embed(image, resized)
     
     cv2.imwrite(image_wm_path, watermarked_image)
     
