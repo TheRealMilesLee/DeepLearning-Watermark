@@ -13,10 +13,14 @@
 class DCT_Watermark
 {
 private:
-
+  cv::Mat Height_Original;
+  cv::Mat Width_Original;
+  cv::Mat ConvertedImage;
+  cv::Mat Height;
+  cv::Mat Width;
 public:
-  void embed();
-  void extract();
+  void embed(const cv::Mat& image, cv::Mat Watermark);
+  void extract(cv::Mat image, cv::Mat Watermark);
 };
 
 

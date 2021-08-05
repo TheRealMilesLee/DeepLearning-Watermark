@@ -3,6 +3,6 @@
 int main()
 {
   DCT_Watermark DCTObject;
-  DCTObject.embed();
+  //DCTObject.embed();
   
 }
