@@ -15,7 +15,8 @@ class DCT_Watermark
 private:
 
 public:
-  void embed()
+  void embed();
+  void extract();
 };
 
 
