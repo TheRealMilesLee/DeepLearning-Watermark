@@ -687,3 +687,7 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+#Adtional libraries
+NumCPP
+NumCPP.hpp
