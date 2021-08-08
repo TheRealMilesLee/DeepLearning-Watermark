@@ -3,7 +3,7 @@ import numpy as np
 import os
 import glob
 
-#
+#文件目录
 input_path = '/Users/arkia/ComputerScienceRelated/watermarkFakerCore/code_watermark_wang/lsb_watermark/input/samples_0.jpg'
 output_path = '/Users/arkia/ComputerScienceRelated/watermarkFakerCore/code_watermark_wang/lsb_watermark/output'
 watermark = cv.imread('/Users/arkia/ComputerScienceRelated/watermarkFakerCore/code_watermark_wang/dft_watermark/lena_color_256.png')
