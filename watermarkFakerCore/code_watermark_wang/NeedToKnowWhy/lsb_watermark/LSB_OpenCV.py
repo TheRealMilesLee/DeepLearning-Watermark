@@ -27,9 +27,11 @@ if not os.path.exists(output_path):
 for order in range(len(input_extract)):
 #输出处理的储量
     print(order + 1)
+    #按照之前input_extract存储的文件名来读取原文件夹中的文件
     origin = cv.imread(input_extract[order])
-    # Make watermark image's size as original image
+    # Make watermark image's size as original image，也就是铺垫一圈0以防后续操作损坏原图片
     wmbroad = np.zeros(origin.shape)
+    
     wmbroad[:watermark.shape[0], :watermark.shape[1], :] = watermark
     wmbroad = wmbroad.astype('uint8')  # 8 bits binary numbers
     # To embed watermarking
