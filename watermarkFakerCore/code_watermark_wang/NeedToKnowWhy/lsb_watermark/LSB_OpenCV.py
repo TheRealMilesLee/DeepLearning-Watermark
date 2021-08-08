@@ -4,16 +4,18 @@ import os
 import glob
 
 #文件目录
-input_path = '/Users/arkia/ComputerScienceRelated/watermarkFakerCore/code_watermark_wang/lsb_watermark/input/samples_0.jpg'
-output_path = '/Users/arkia/ComputerScienceRelated/watermarkFakerCore/code_watermark_wang/lsb_watermark/output'
-watermark = cv.imread('/Users/arkia/ComputerScienceRelated/watermarkFakerCore/code_watermark_wang/dft_watermark/lena_color_256.png')
+input_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/source'
+output_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/output'
+watermark_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/Watermark'
+watermark = cv.imread(watermark_path)
 input_extract = glob.glob(os.path.join(input_path, "*.png"))
 
 """
 Watermarks the image by replacing the least significant bits of the image.
 """
 def watermark_lsb(origin, info):
-    origin = format(origin, '08b')  # 8 bits binary number in str filled by '0' (255 = 2**8)
+    # 将文件转化为二进制模式
+    origin = format(origin, '08b') 
     info = format(info, '08b')
     wm_msb = info[:2]  # the most significant bits of info
     im_lsb = origin[:-2]  # remove the least significant bits of origin
