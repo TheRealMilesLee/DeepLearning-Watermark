@@ -31,14 +31,15 @@ for order in range(len(input_extract)):
     origin = cv.imread(input_extract[order])
     # Make watermark image's size as original image，也就是铺垫一圈0以防后续操作损坏原图片
     wmbroad = np.zeros(origin.shape)
-    
     wmbroad[:watermark.shape[0], :watermark.shape[1], :] = watermark
+    # 转换为8位二进制模式
     wmbroad = wmbroad.astype('uint8')  # 8 bits binary numbers
-    # To embed watermarking
+    # 嵌入水印，先将函数向量化
     vec_watermark = np.vectorize(watermark_lsb)  # to apply LSB to matrices and arrays
+    #调用向量化以后的watermark_lsb函数将原图进行水印处理
     watermarked = vec_watermark(origin, wmbroad)
+    #输出文件名设置
     input_rename = os.path.splitext(os.path.basename(input_extract[order]))[0] + "_wLSB.png"
 #输出所有东西
     cv.imwrite(os.path.join(output_path, input_rename), watermarked)
-
 print("finish")
