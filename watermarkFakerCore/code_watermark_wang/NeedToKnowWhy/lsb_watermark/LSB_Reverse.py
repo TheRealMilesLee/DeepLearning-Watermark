@@ -4,8 +4,8 @@ import os
 import glob
 
 # 文件目录位置
-input_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/output'
-output_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/output/Reverse'
+input_path = 'D:\CS-Related\Watermark Faker\Test_Images\LSB\Output'
+output_path = 'D:\CS-Related\Watermark Faker\Test_Images\LSB\Output\Reverse'
 output_extract = glob.glob(os.path.join(input_path, "*.png"))
 # 如果输出文件不存在就创建一个新的文件夹
 if not os.path.exists(output_path):
@@ -20,7 +20,6 @@ def dewatermark_lsb(result):
     result = format(result, '08b')
     #读取最后两位
     info = result[-2:]
-    # ???
     wm = int(info + '0'*6, 2)
     return wm
 
@@ -37,3 +36,4 @@ for order in range(len(output_extract)):
     # 输出
     cv.imwrite(os.path.join(output_path, out_rename), extracted_out)
 print("finish")
+

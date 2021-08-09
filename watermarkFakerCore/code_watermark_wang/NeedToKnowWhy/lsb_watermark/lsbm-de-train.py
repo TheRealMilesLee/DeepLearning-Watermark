@@ -22,20 +22,12 @@ if __name__ == '__main__':
 
     i = 0
     for file_name in os.listdir(source_path):
-        # if file_name.__contains__("input"):
-        #     continue
-
         image_wm_path = os.path.join(source_path, file_name)
         origin_name = file_name.split("-")[0] + ".png"
-
         image_wm = cv2.imread(image_wm_path)
-
         extrated_watermark_path = os.path.join(output_path, file_name.split(".")[0] + "-extract.png")
         extrated_watermark = alg.extract(image_wm)
         cv2.imwrite(extrated_watermark_path, extrated_watermark)
-
         i += 1
         print(i)
-
-
     print("finished")
