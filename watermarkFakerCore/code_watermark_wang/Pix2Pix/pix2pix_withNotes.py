@@ -48,7 +48,8 @@ a = parser.parse_args()
 
 EPS = 1e-12
 CROP_SIZE = 256  # 原始数值：256
-
+Examples = collections.namedtuple("Examples", "paths, inputs, targets, count, steps_per_epoch")
+Model = collections.namedtuple("Model", "outputs, predict_real, predict_fake, discrim_loss, discrim_grads_and_vars, gen_loss_GAN, gen_loss_L1, gen_grads_and_vars, train")
 def preprocess(image):
     with tf.name_scope("preprocess"):
         # [0, 1] => [-1, 1]
@@ -161,9 +162,9 @@ def rgb_to_lab(srgb):
             rgb_pixels = (srgb_pixels / 12.92 * linear_mask) + (((srgb_pixels + 0.055) / 1.055) ** 2.4) * exponential_mask
             rgb_to_xyz = tf.constant([
                 #    X        Y          Z
-                [0.412453, 0.212671, 0.019334],  # R
-                [0.357580, 0.715160, 0.119193],  # G
-                [0.180423, 0.072169, 0.950227],  # B
+                [0.412453, 0.212671, 0.019334], # R
+                [0.357580, 0.715160, 0.119193], # G
+                [0.180423, 0.072169, 0.950227], # B
             ])
             xyz_pixels = tf.matmul(rgb_pixels, rgb_to_xyz)
 
