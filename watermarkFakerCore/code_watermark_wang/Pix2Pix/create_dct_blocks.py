@@ -2,13 +2,11 @@ import math
 import numpy as np
 import tensorflow as tf
 
-
 def alpha(x, k):
     if x == 0:
         return (1/k)**0.5
     else:
         return (2/k)**0.5
-
 
 def one_dct_block(u, v, k):
     c_u_v = np.zeros([k, k])
@@ -22,7 +20,6 @@ def one_dct_block(u, v, k):
 
     return c_u_v
 
-
 # k：represents the size of a harmonic kernel and the number of harmonic kernels
 def create_dct_blocks(k):
     # [rows, columns, kernel_height, kernel_width]
@@ -34,7 +31,6 @@ def create_dct_blocks(k):
             kernels_bank[u, v] = dct_kernel
 
     return kernels_bank
-
 
 # the function is designed for tensorflow.nn.conv2d
 # 该函数针对tensorflow.nn.conv2d，为了产生正确的卷积核，对kernel的格式、顺序做了调整
@@ -49,7 +45,6 @@ def one_dct_block_tf(u, v, k):
             c_u_v[m, n, 0, 0] = alpha(u, k) * alpha(v, k) * cos_part1 * cos_part2
 
     return c_u_v
-
 
 # k：represents the size of a harmonic kernel and the number of harmonic kernels
 # the function is designed for tensorflow.nn.conv2d
@@ -113,39 +108,4 @@ def create_dct_blocks_tf_fast(k, isConv, input_channels_size):
     kernels_bank = tmp
     # now for convolution [kernel_height = k, kernel_width = k, in_channels = n, out_channels = n*k*k]
     # now for de-convolution [kernel_height = k, kernel_width = k, out_channels = n*k*k, in_channels = n]
-
-
     return kernels_bank
-
-
-# print("start")
-#
-# y = create_dct_blocks_tf(4)
-# print(y)
-#
-# image = tf.ones([1, 8, 8, 1], dtype=tf.float32)
-# filter2 = tf.constant(y, dtype=tf.float32)
-#
-# result = tf.nn.conv2d(input=image, filter=filter2, strides=(1, 4, 4, 1), padding="SAME")
-#
-# result2 = tf.concat([result, result], axis=3)
-#
-# result3 = tf.ones([1, 8, 8, 3], dtype=tf.float32)
-# result4 = tf.split(result3, 3, axis=3)
-#
-# print(result.shape)
-# print(result2.shape[3])
-#
-# with tf.Session() as sess:
-#     print(sess.run(result))
-#     print(sess.run(result2))
-#     print(sess.run(result4))
-#     print(sess.run(tf.shape(result2)))
-#     print(result2.shape[3])
-#
-# '''
-# 以下是数组扩充实验
-# '''
-#
-# for i in range(1, 10):
-#     print(i)
