@@ -48,8 +48,12 @@ a = parser.parse_args()
 
 EPS = 1e-12
 CROP_SIZE = 256  # 原始数值：256
+
+# collections.namedtuple，参见：https://www.cnblogs.com/jiangbingyang/p/7455853.html
 Examples = collections.namedtuple("Examples", "paths, inputs, targets, count, steps_per_epoch")
 Model = collections.namedtuple("Model", "outputs, predict_real, predict_fake, discrim_loss, discrim_grads_and_vars, gen_loss_GAN, gen_loss_L1, gen_grads_and_vars, train")
+
+
 def preprocess(image):
     with tf.name_scope("preprocess"):
         # [0, 1] => [-1, 1]
@@ -263,7 +267,7 @@ def load_examples():
         return name
 
     # 根据文件的名字是字符还是纯数字进行重排序
-    # if all the image names are numbers, sort by the value rather than ascetically
+    # if all the image names are numbers, sort by the value rather than ASCIIbetically
     # having sorted inputs means that the outputs are sorted in test mode
     if all(get_name(path).isdigit() for path in input_paths):
         input_paths = sorted(input_paths, key=lambda path: int(get_name(path)))
@@ -311,7 +315,6 @@ def load_examples():
     # synchronize seed for image operations so that we do the same operations to both
     # input and output images
     seed = random.randint(0, 2**31 - 1)
-    Examples = collections.namedtuple("Examples", "paths, inputs, targets, count, steps_per_epoch")
     # 根据参数设置，决定是否对图片进行反转、放大剪裁
     def transform(image):
         r = image
@@ -320,6 +323,7 @@ def load_examples():
 
         # area produces a nice downscaling, but does nearest neighbor for upscaling
         # assume we're going to be doing downscaling here
+        # tf.image.resize_images()一个特殊的修改图像的高h和宽w的函数，详见官方解释
         r = tf.image.resize_images(r, [a.scale_size, a.scale_size], method=tf.image.ResizeMethod.AREA)
 
         # tf.cast()用于转换数据类型
@@ -542,7 +546,7 @@ def create_model(inputs, targets):
 
     # global_step加1，这是一个可以重复执行的操作op，参见：https://blog.csdn.net/a19990412/article/details/82917734
     incr_global_step = tf.assign(global_step, global_step+1)
-    Model = collections.namedtuple("Model", "outputs, predict_real, predict_fake, discrim_loss, discrim_grads_and_vars, gen_loss_GAN, gen_loss_L1, gen_grads_and_vars, train")
+
     return Model(
         predict_real=predict_real,
         predict_fake=predict_fake,
@@ -896,7 +900,7 @@ def main():
                 # fetches中存储的是各种操作，这些操作通过sess.run()来运行
                 # 疑问：这里的options与run_metadata的作用
                 # 关于参数的作用，参见：https://blog.csdn.net/lllxxq141592654/article/details/89792885
-                results = sess.run(fetches)
+                results = sess.run(fetches, options=options, run_metadata=run_metadata)
 
                 if should(a.summary_freq):  # 满足summary条件
                     print("recording summary")
@@ -938,4 +942,3 @@ def main():
                 if sv.should_stop():
                     break
 main()
-
