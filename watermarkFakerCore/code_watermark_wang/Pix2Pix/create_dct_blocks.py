@@ -1,6 +1,5 @@
 import math
 import numpy as np
-import tensorflow as tf
 
 def alpha(x, k):
     if x == 0:
@@ -85,10 +84,8 @@ def create_dct_blocks_tf_fast(k, isConv, input_channels_size):
                 kernels_bank = np.concatenate((kernels_bank, dct_kernel), axis=3)
             else:
                 kernels_bank = np.concatenate((kernels_bank, dct_kernel), axis=2)
-
     # now for convolution [kernel_height = k, kernel_width = k, in_channels = 1, out_channels = k*k]
     # now for de-convolution [kernel_height = k, kernel_width = k, out_channels = k*k, in_channels = 1]
-
     tmp = kernels_bank
     for i in range(1, input_channels_size):
         if isConv is True:
