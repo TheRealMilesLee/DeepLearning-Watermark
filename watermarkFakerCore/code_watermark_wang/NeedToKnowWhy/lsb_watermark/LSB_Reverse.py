@@ -7,7 +7,7 @@ import glob
 input_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/output'
 output_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/output/Reverse'
 output_extract = glob.glob(os.path.join(input_path, "*.png"))
-# 错误处理
+# 如果输出文件不存在就创建一个新的文件夹
 if not os.path.exists(output_path):
     os.makedirs(output_path)
 
