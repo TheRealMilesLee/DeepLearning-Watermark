@@ -4,9 +4,9 @@ import os
 import glob
 
 #文件目录
-input_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/source'
-output_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/output'
-watermark_path = '/Users/arkia/ComputerScienceRelated/Watermark Faker/Watermark Faker Data/LSB/Watermark'
+input_path = 'D:/CS-Related/Watermark Faker/Test_Images/LSB/Source'
+output_path = 'D:/CS-Related/Watermark Faker/Test_Images/LSB/Output'
+watermark_path = 'D:/CS-Related/Watermark Faker/Test_Images/LSB/Watermark/Lena.png'
 watermark = cv.imread(watermark_path)
 input_extract = glob.glob(os.path.join(input_path, "*.png"))
 
