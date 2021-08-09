@@ -2,13 +2,11 @@ import os
 import cv2
 import argparse
 import numpy as np
-from watermarks import lsbm
+from watermarkAlgorithmLibrary import lsbm
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--source_path",
-                    default="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/test_newDCT_noTanh_bn(l1_weight=100)/images")
-parser.add_argument("--output_path",
-                    default="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/extract_newDCT_noTanh_bn(l1_weight=100)")
+parser.add_argument("--source_path", default="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/test_newDCT_noTanh_bn(l1_weight=100)/images")
+parser.add_argument("--output_path", default="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/extract_newDCT_noTanh_bn(l1_weight=100)")
 a = parser.parse_args()
 
 if __name__ == '__main__':
