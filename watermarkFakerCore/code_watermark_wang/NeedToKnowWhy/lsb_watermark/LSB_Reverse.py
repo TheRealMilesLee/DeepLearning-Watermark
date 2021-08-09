@@ -18,6 +18,7 @@ to the most significant for watermark extraction.
 def dewatermark_lsb(result):
     # 转化为二进制模式
     result = format(result, '08b')
+    
     info = result[-2:]
     wm = int(info + '0'*6, 2)
     return wm
