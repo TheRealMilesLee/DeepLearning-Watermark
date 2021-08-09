@@ -808,6 +808,4 @@ def main():
 
                 if sv.should_stop():
                     break
-
-
 main()
