@@ -356,6 +356,7 @@ def create_generator(generator_inputs, generator_outputs_channels):
             output = batchnorm(convolved)
             layers.append(output)
 
+            
     layer_specs = [
         (a.ngf * 8, 0.5),   # decoder_8: [batch, 1, 1, ngf * 8] => [batch, 2, 2, ngf * 8 * 2]
         (a.ngf * 8, 0.5),   # decoder_7: [batch, 2, 2, ngf * 8 * 2] => [batch, 4, 4, ngf * 8 * 2]
@@ -806,4 +807,6 @@ def main():
 
                 if sv.should_stop():
                     break
+
+
 main()
