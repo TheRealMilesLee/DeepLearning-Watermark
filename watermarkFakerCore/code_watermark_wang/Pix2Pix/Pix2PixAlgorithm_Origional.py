@@ -14,11 +14,9 @@ import math
 import time
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--input_dir", default="/home/wangruowei/PycharmProjects/watermark2020/data/pair_dct/train"
-                    , help="path to folder containing images")
+parser.add_argument("--input_dir", default="/home/wangruowei/PycharmProjects/watermark2020/data/pair_dct/train", help="path to folder containing images")
 parser.add_argument("--mode", required=False, default="train", choices=["train", "test", "export"])
-parser.add_argument("--output_dir", required=False, default="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/train_result_try"
-                    , help="where to put output files")
+parser.add_argument("--output_dir", required=False, default="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/train_result_try", help="where to put output files")
 parser.add_argument("--seed", type=int)
 parser.add_argument("--checkpoint", default=None, help="directory with checkpoint to resume training from or use for testing")
 
