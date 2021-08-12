@@ -13,11 +13,11 @@ from create_dct_blocks import create_dct_blocks_tf
 # 2020年7月28日，pix2pix的semi-harmonic版本，即生成器前半部分为harmonic block
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--input_dir", default="D:\CS-Related\Watermark Faker\Test_Images\DCT\images\Output", help="path to folder containing images")
+parser.add_argument("--input_dir", default="D:/CS-Related/Watermark Faker/Test_Images/DCT/images/Output", help="path to folder containing images")
 parser.add_argument("--mode", required=False, default="train", choices=["train", "test", "export"])
-parser.add_argument("--output_dir", required=False, default="D:\CS-Related\Watermark Faker\Watermark Faker Output\Harmonic Test\Semi-Harmonic", help="where to put output files")
+parser.add_argument("--output_dir", required=False, default="D:/CS-Related/Watermark Faker/Watermark Faker Output/Harmonic Test/Semi-Harmonic", help="where to put output files")
 parser.add_argument("--seed", type=int)
-parser.add_argument("--checkpoint", default="None", help="directory with checkpoint to resume training from or use for testing")
+parser.add_argument("--checkpoint", default=None, help="directory with checkpoint to resume training from or use for testing")
 
 parser.add_argument("--max_steps", type=int, help="number of training steps (0 to disable)")
 parser.add_argument("--max_epochs", type=int, default=30, help="number of training epochs")
