@@ -13,11 +13,11 @@ from create_dct_blocks import create_dct_blocks_tf
 # 2020年7月28日，pix2pix的semi-harmonic版本，即生成器前半部分为harmonic block
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--input_dir", default="D:/CS-Related/Watermark Faker/Test_Images/facades/test", help="path to folder containing images")
+parser.add_argument("--input_dir", default="D:\CS-Related\Watermark Faker\Test_Images\DCT\images\Output", help="path to folder containing images")
 parser.add_argument("--mode", required=False, default="train", choices=["train", "test", "export"])
 parser.add_argument("--output_dir", required=False, default="D:\CS-Related\Watermark Faker\Watermark Faker Output\Harmonic Test\Semi-Harmonic", help="where to put output files")
 parser.add_argument("--seed", type=int)
-parser.add_argument("--checkpoint", default="D:\CS-Related\Watermark Faker\Watermark Faker Output\Harmonic Test\Semi-Harmonic", help="directory with checkpoint to resume training from or use for testing")
+parser.add_argument("--checkpoint", default="None", help="directory with checkpoint to resume training from or use for testing")
 
 parser.add_argument("--max_steps", type=int, help="number of training steps (0 to disable)")
 parser.add_argument("--max_epochs", type=int, default=30, help="number of training epochs")
@@ -30,7 +30,7 @@ parser.add_argument("--save_freq", type=int, default=500, help="save model every
 parser.add_argument("--separable_conv", action="store_true", help="use separable convolutions in the generator")
 parser.add_argument("--aspect_ratio", type=float, default=1.0, help="aspect ratio of output images (width/height)")
 parser.add_argument("--lab_colorization", action="store_true", help="split input image into brightness (A) and color (B)")
-parser.add_argument("--batch_size", type=int, default=8, help="number of images in batch")
+parser.add_argument("--batch_size", type=int, default=10, help="number of images in batch")
 parser.add_argument("--which_direction", type=str, default="AtoB", choices=["AtoB", "BtoA"])
 parser.add_argument("--ngf", type=int, default=64, help="number of generator filters in first conv layer")
 parser.add_argument("--ndf", type=int, default=64, help="number of discriminator filters in first conv layer")
