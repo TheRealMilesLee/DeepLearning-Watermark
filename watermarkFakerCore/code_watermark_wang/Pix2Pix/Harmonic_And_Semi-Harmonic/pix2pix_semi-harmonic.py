@@ -1,7 +1,3 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import tensorflow as tf
 import numpy as np
 import argparse
@@ -12,21 +8,16 @@ import random
 import collections
 import math
 import time
-
-# added by Ruowei Wang, 2020年7月27日16点31分
 from create_dct_blocks import create_dct_blocks_tf
 
 # 2020年7月28日，pix2pix的semi-harmonic版本，即生成器前半部分为harmonic block
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--input_dir", default="/home/wangruowei/PycharmProjects/watermark2020/data/pair_dct/train"
-                    , help="path to folder containing images")
+parser.add_argument("--input_dir", default="D:/CS-Related/Watermark Faker/Test_Images/facades/test", help="path to folder containing images")
 parser.add_argument("--mode", required=False, default="train", choices=["train", "test", "export"])
-parser.add_argument("--output_dir", required=False, default="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/train_result_semi-harmonic_3"
-                    , help="where to put output files")
+parser.add_argument("--output_dir", required=False, default="D:\CS-Related\Watermark Faker\Watermark Faker Output\Harmonic Test\Semi-Harmonic", help="where to put output files")
 parser.add_argument("--seed", type=int)
-parser.add_argument("--checkpoint", default="/home/wangruowei/PycharmProjects/watermark2020/experment_results/dct/train_result_semi-harmonic_2"
-                    , help="directory with checkpoint to resume training from or use for testing")
+parser.add_argument("--checkpoint", default="D:\CS-Related\Watermark Faker\Watermark Faker Output\Harmonic Test\Semi-Harmonic", help="directory with checkpoint to resume training from or use for testing")
 
 parser.add_argument("--max_steps", type=int, help="number of training steps (0 to disable)")
 parser.add_argument("--max_epochs", type=int, default=30, help="number of training epochs")
