@@ -58,15 +58,12 @@ def create_dct_blocks_tf(k, isConv):
 
 # create_dct_blocks_tf()函数的快速版本，尝试通过此改进提升网络结果的速度，2020年08月04日09:40:51，by王爇沩
 def create_dct_blocks_tf_fast(k, isConv, input_channels_size):
-
     kernels_bank = one_dct_block_tf(0, 0, k)
-
     for u in range(k):
         for v in range(k):
             if u == 0 and v == 0:
                 continue
             dct_kernel = one_dct_block_tf(u, v, k)
-
             if isConv is True:
                 kernels_bank = np.concatenate((kernels_bank, dct_kernel), axis=3)
             else:
