@@ -156,16 +156,12 @@ def harmonic_deconv(batch_input, height_width, out_channels, dct_kernel_bank):
     # 对每一个通道进行卷积
     [batch, in_height, in_width, in_channels] = batch_input.get_shape()  # 获取输入的shape
     batch_input_slices = tf.split(batch_input, in_channels, axis=3)  # 对不同通道进行切分
-    dct_outputs = tf.nn.conv2d_transpose(value=batch_input_slices[0],
-                                         filter=dct_filter,
-                                         output_shape=[a.batch_size, h_w, h_w, 16],
-                                         strides=(1, 2, 2, 1),
+    dct_outputs = tf.nn.conv2d_transpose(value=batch_input_slices[0], filter=dct_filter,
+                                         output_shape=[a.batch_size, h_w, h_w, 16], strides=(1, 2, 2, 1),
                                          padding="SAME")  # 开始对不同通道进行DCT卷积
     for i in range(1, in_channels):
-        tmp = tf.nn.conv2d_transpose(value=batch_input_slices[i],
-                                     filter=dct_filter,
-                                     output_shape=[a.batch_size, h_w, h_w, 16],
-                                     strides=(1, 2, 2, 1),
+        tmp = tf.nn.conv2d_transpose(value=batch_input_slices[i], filter=dct_filter,
+                                     output_shape=[a.batch_size, h_w, h_w, 16], strides=(1, 2, 2, 1),
                                      padding="SAME")
         dct_outputs = tf.concat([dct_outputs, tmp], axis=3)
 
