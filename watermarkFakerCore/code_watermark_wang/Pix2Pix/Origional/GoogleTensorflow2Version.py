@@ -6,14 +6,12 @@ import datetime
 from matplotlib import pyplot as plt
 from IPython import display
 
+
 #Prepare the file to train for
 dataset_name = "facades"
 # Link to the file
 _URL = f'http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/{dataset_name}.tar.gz'
-path_to_zip = tf.keras.utils.get_file(
-    fname=f"{dataset_name}.tar.gz",
-    origin=_URL,
-    extract=True)
+path_to_zip = tf.keras.utils.get_file(fname=f"{dataset_name}.tar.gz", origin=_URL, extract=True)
 path_to_zip  = pathlib.Path(path_to_zip)
 PATH = path_to_zip.parent/dataset_name
 
