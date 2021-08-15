@@ -10,19 +10,7 @@ from IPython import display
 #Prepare the file to train for
 dataset_name = "facades"
 # Link to the file
-_URL = f'http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/{dataset_name}.tar.gz'
-path_to_zip = tf.keras.utils.get_file(fname=f"{dataset_name}.tar.gz", origin=_URL, extract=True)
-path_to_zip  = pathlib.Path(path_to_zip)
-PATH = path_to_zip.parent/dataset_name
-
-list(PATH.parent.iterdir())
-
-sample_image = tf.io.read_file(str(PATH / 'train/1.jpg'))
-sample_image = tf.io.decode_jpeg(sample_image)
-print(sample_image.shape)
-
-plt.figure()
-plt.imshow(sample_image)
+Source_Directory = '/Users/arkia/ComputerScienceRelated/Watermark Faker/{dataset_name}'
 
 def load(image_file):
   # Read and decode an image file to a uint8 tensor
