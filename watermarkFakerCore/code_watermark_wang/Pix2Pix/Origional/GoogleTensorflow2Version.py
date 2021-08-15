@@ -7,17 +7,21 @@ import glob
 from matplotlib import pyplot as plt
 from IPython import display
 
-  # The facade training set consist of 400 images
+dataset_name = "facades"
+
+Filepath = tf.keras.utils.get_file( fname=f"facades", origin="D:/CS-Related/Watermark Faker/Test_Images/" ,extract=False)
+
+Filepath  = pathlib.Path(Filepath)
+
+PATH = Filepath.parent/dataset_name
+
+# The facade training set consist of 400 images
 BUFFER_SIZE = 400
 # The batch size of 1 produced better results for the U-Net in the original pix2pix experiment
 BATCH_SIZE = 1
 # Each image is 256x256 in size
 IMG_WIDTH = 256
 IMG_HEIGHT = 256
-
-# Link to the file
-Source_Directory = 'D:/CS-Related/Watermark Faker/Test_Images/facades/train'
-image_file = glob.glob(os.path.join(Source_Directory,'*.jpg'))
 
 # Load the image
 def load(image_file):
@@ -44,8 +48,7 @@ def resize(input_image, real_image, height, width):
 
 def random_crop(input_image, real_image):
   stacked_image = tf.stack([input_image, real_image], axis=0)
-  cropped_image = tf.image.random_crop(
-      stacked_image, size=[2, IMG_HEIGHT, IMG_WIDTH, 3])
+  cropped_image = tf.image.random_crop(stacked_image, size=[2, IMG_HEIGHT, IMG_WIDTH, 3])
   return cropped_image[0], cropped_image[1]
 
 # Normalizing the images to [-1, 1]
