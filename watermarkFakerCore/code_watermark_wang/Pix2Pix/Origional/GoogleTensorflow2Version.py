@@ -66,10 +66,22 @@ def random_jitter(input_image, real_image):
     real_image = tf.image.flip_left_right(real_image)
   return input_image, real_image
 
-plt.figure(figsize=(6, 6))
-for i in range(4):
-  rj_inp, rj_re = random_jitter(inp, re)
-  plt.subplot(2, 2, i + 1)
-  plt.imshow(rj_inp / 255.0)
-  plt.axis('off')
-plt.show()
+def load_image_train(image_file):
+  input_image, real_image = load(image_file)
+  input_image, real_image = random_jitter(input_image, real_image)
+  input_image, real_image = normalize(input_image, real_image)
+  return input_image, real_image
+
+def load_image_test(image_file):
+  input_image, real_image = load(image_file)
+  input_image, real_image = resize(input_image, real_image, IMG_HEIGHT, IMG_WIDTH)
+  input_image, real_image = normalize(input_image, real_image)
+  return input_image, real_image
+
+  '''
+  Build an  input pipeline with tf.data
+  '''
+train_dataset = tf.data.Dataset.list_files(str(PATH / 'train/*.jpg'))
+train_dataset = train_dataset.map(load_image_train, num_parallel_calls=tf.data.AUTOTUNE)
+train_dataset = train_dataset.shuffle(BUFFER_SIZE)
+train_dataset = train_dataset.batch(BATCH_SIZE)
