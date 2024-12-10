@@ -1,7 +1,7 @@
 absl-py==0.12.0
 astunparse==1.6.3
 cachetools==4.2.2
-certifi==2021.5.30
+certifi==2024.7.4
 chardet==4.0.0
 cloudpickle==1.6.0
 cycler==0.10.0
@@ -12,7 +12,7 @@ gast==0.4.0
 google-auth==1.30.1
 google-auth-oauthlib==0.4.4
 google-pasta==0.2.0
-grpcio==1.34.1
+grpcio==1.53.2
 h5py==3.1.0
 idna==2.10
 keras-nightly==2.5.0.dev2021032900
@@ -23,9 +23,9 @@ matplotlib==3.4.2
 numpy==1.19.5
 oauthlib==3.2.2
 opt-einsum==3.3.0
-Pillow==8.2.0
+Pillow==9.3.0
 pip==21.1.3
-protobuf==3.17.2
+protobuf==3.18.3
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pyparsing==2.4.7
@@ -40,13 +40,13 @@ tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.0
 tensorflow-estimator==2.5.0
 tensorflow-gan==2.0.0
-tensorflow-gpu==2.5.3
+tensorflow-gpu==2.9.3
 tensorflow-hub==0.12.0
 tensorflow-probability==0.12.2
 termcolor==1.1.0
 tqdm==4.61.0
 typing-extensions==3.7.4.3
 urllib3==1.26.5
-Werkzeug==2.0.1
-wheel==0.36.2
+wheel==0.38.1
+Werkzeug==2.2.3
 wrapt==1.12.1
